@@ -30,7 +30,7 @@ const LoginPage = () => {
 
         <p className="other-text">Other login options</p>
         <div className="social-login">
-          <button className="icon-btn fb">f</button>
+          <button className="icon-btn fb">F</button>
           <button className="icon-btn google">G</button>
           <button className="icon-btn apple"></button>
           <button className="icon-btn office">O</button>
