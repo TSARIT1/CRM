@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom'; // 👈 Import navigate hook
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate(); // 👈 Initialize navigator
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Logged in with: ${email}`);
+    // Simulate login logic (you can add validation here)
+    if (email.trim() !== '') {
+      navigate('/dashboard'); // 👈 Redirect to dashboard on success
+    }
   };
 
   return (
@@ -30,11 +35,11 @@ const LoginPage = () => {
 
         <p className="other-text">Other login options</p>
         <div className="social-login">
-          <button className="icon-btn fb">F</button>
+          <button className="icon-btn fb">f</button>
           <button className="icon-btn google">G</button>
           <button className="icon-btn apple"></button>
           <button className="icon-btn office">O</button>
-          <button className="icon-btn more">•••</button>
+          <button className="icon-btn more">••••</button>
         </div>
       </div>
     </div>
@@ -42,5 +47,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
 
 
