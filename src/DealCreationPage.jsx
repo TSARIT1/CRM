@@ -40,7 +40,7 @@ const DealCreationPage = ({ onClose }) => {
       stage: 'New',
       amount: '',
       currency: 'Indian Rupee',
-      endDate: '2025-06-19',
+      endDate: '',
       contact: '',
       company: '',
       dearType: 'Sales',
@@ -55,11 +55,23 @@ const DealCreationPage = ({ onClose }) => {
     });
   };
 
-  const addProduct = () => {
-    const newProduct = prompt('Enter product name:');
-    if (newProduct) {
-      setFormData(prev => ({ ...prev, products: [...prev.products, newProduct] }));
-    }
+  const addProductRow = () => {
+    const newRow = {
+      product: '',
+      price: 0,
+      quantity: 1
+    };
+    setFormData(prev => ({ ...prev, products: [...prev.products, newRow] }));
+  };
+
+  const updateProductRow = (index, key, value) => {
+    const updatedProducts = [...formData.products];
+    updatedProducts[index][key] = key === 'price' || key === 'quantity' ? parseFloat(value) || 0 : value;
+    setFormData(prev => ({ ...prev, products: updatedProducts }));
+  };
+
+  const getTotalAmount = () => {
+    return formData.products.reduce((sum, p) => sum + p.price * p.quantity, 0);
   };
 
   return (
@@ -72,10 +84,11 @@ const DealCreationPage = ({ onClose }) => {
         ))}
       </nav>
 
-      {showForm && (
+      {activeNav === 'General' && showForm && (
         <div className="deal-popup-overlay">
           <div className="deal-popup animated-popup">
             <form onSubmit={handleSubmit} className="deal-form">
+              {/* General Info */}
               <h3>ABOUT DEAL</h3>
               <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Deal Name" required />
               <select name="stage" value={formData.stage} onChange={handleChange}>
@@ -97,6 +110,7 @@ const DealCreationPage = ({ onClose }) => {
               <input type="text" name="contact" value={formData.contact} onChange={handleChange} placeholder="Contact info" />
               <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company" />
 
+              {/* More Info */}
               <h3>MORE</h3>
               <input type="text" name="dearType" value={formData.dearType} onChange={handleChange} placeholder="Deal Type" />
               <select name="source" value={formData.source} onChange={handleChange}>
@@ -114,12 +128,6 @@ const DealCreationPage = ({ onClose }) => {
               <input type="email" name="email" value={formData.email} onChange={handleChange} />
               <textarea name="comment" value={formData.comment} onChange={handleChange} placeholder="Comments" />
 
-              <h3>PRODUCTS</h3>
-              <ul>
-                {formData.products.map((prod, idx) => <li key={idx}>{prod}</li>)}
-              </ul>
-              <button type="button" className="add-product-link" onClick={addProduct}>+ Add product</button>
-
               <div className="form-actions">
                 <button type="submit" className="save-btn">Save</button>
                 <button type="button" className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
@@ -129,7 +137,67 @@ const DealCreationPage = ({ onClose }) => {
         </div>
       )}
 
-      {!showForm && (
+      {activeNav === 'Products' && (
+        <div className="products-section">
+          <div className="product-header">
+            <button onClick={addProductRow} className="add-btn">ADD PRODUCT</button>
+            <button className="select-btn">SELECT PRODUCT</button>
+          </div>
+
+          <table className="product-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {formData.products.map((p, index) => (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>
+                    <input
+                      type="text"
+                      value={p.product}
+                      onChange={(e) => updateProductRow(index, 'product', e.target.value)}
+                      placeholder="Find or create a new product"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.price}
+                      onChange={(e) => updateProductRow(index, 'price', e.target.value)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={p.quantity}
+                      onChange={(e) => updateProductRow(index, 'quantity', e.target.value)}
+                    />
+                  </td>
+                  <td>{(p.price * p.quantity).toFixed(2)} Rs.</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="product-summary">
+            <div>Total without discounts and taxes: Rs. {getTotalAmount().toFixed(2)}</div>
+            <div>Delivery price: Rs. 0</div>
+            <div>Discount amount: Rs. 0</div>
+            <div>Total before tax: Rs. {getTotalAmount().toFixed(2)}</div>
+            <div>Tax total: Rs. 0</div>
+            <div className="total-amount">Total amount: <strong>Rs. {getTotalAmount().toFixed(2)}</strong></div>
+          </div>
+        </div>
+      )}
+
+      {!showForm && activeNav === 'General' && (
         <div className="entries-table">
           <h3>General Information</h3>
           <button className="add-new-btn" onClick={() => setShowForm(true)}>+ New Deal</button>
@@ -154,7 +222,7 @@ const DealCreationPage = ({ onClose }) => {
                   <td>{entry.contact}</td>
                   <td>{entry.company}</td>
                   <td>{entry.email}</td>
-                  <td>{entry.products.join(', ')}</td>
+                  <td>{entry.products.map(p => p.product).join(', ')}</td>
                 </tr>
               ))}
             </tbody>
@@ -166,6 +234,7 @@ const DealCreationPage = ({ onClose }) => {
 };
 
 export default DealCreationPage;
+
 
 
 
