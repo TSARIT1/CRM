@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
-import { useNavigate } from 'react-router-dom'; // 👈 Import navigate hook
+import { useNavigate } from 'react-router-dom'; 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
-  const navigate = useNavigate(); // 👈 Initialize navigator
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate login logic (you can add validation here)
+    
     if (email.trim() !== '') {
-      navigate('/dashboard'); // 👈 Redirect to dashboard on success
+      navigate('/dashboard'); 
     }
   };
 
