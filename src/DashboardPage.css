@@ -1,664 +1,349 @@
-/* ---------- General Layout ---------- */
+
+/* ---------- Base ---------- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fafb;
+  color: #1e293b;
+  height: 100%;
+  overflow: hidden;
+}
+
 .dashboard-container {
   display: flex;
   height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
+/* ---------- Sidebar ---------- */
 .sidebar {
-  background-color: #2a2f45;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  min-width: 220px;
+  background: #1e293b;
   color: #fff;
-  width: 60px;
-  transition: width 0.3s ease;
-  overflow-y: auto;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
-.sidebar.expanded {
-  width: 220px;
+.sidebar-icon-bar {
+  background-color: #111827;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+  border-bottom: 1px solid #374151;
+}
+
+.sidebar-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.main-icons, .bottom-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+.icon-wrapper {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.icon-wrapper:hover,
+.icon-wrapper.active {
+  background-color: #374151;
+  transform: scale(1.08);
+}
+
+.notification span {
+  background: red;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+/* ---------- Sidebar Content ---------- */
+.sidebar-content {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
 }
 
 .sidebar-header {
   display: flex;
-  align-items: center;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.menu-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.brand-title {
-  font-size: 20px;
-}
-
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-item {
-  padding: 10px 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.menu-item:hover, .menu-item.active {
-  background-color: #3e4566;
-}
-
-.emoji {
-  margin-right: 10px;
-  font-size: 18px;
-}
-
-.label {
-  flex: 1;
-}
-
-.arrow {
-  font-size: 12px;
-  margin-left: auto;
-}
-
-.submenu-wrapper {
-  padding-left: 30px;
-  background: #39405c;
-}
-
-.submenu-item {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  font-size: 14px;
-}
-
-.submenu-dot {
-  margin-right: 6px;
-}
-
-/* ---------- Navbar ---------- */
-.main-content {
-  flex: 1;
-  background: #f5f7fa;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.navbar {
-  background: #fff;
-  padding: 10px 20px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
 }
 
-.nav-links {
-  display: flex;
-  gap: 18px;
-  list-style: none;
-  padding: 0;
+.sidebar-header h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
   margin: 0;
 }
 
-.nav-links li {
+.add-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
   cursor: pointer;
-  padding: 6px 10px;
+  transition: background 0.3s ease;
 }
 
-.nav-links li.active {
-  font-weight: bold;
-  border-bottom: 2px solid #4a90e2;
-}
-
-.right-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.add-btn:hover {
+  background: #2563eb;
 }
 
 .search-wrapper {
+  margin-top: 12px;
   position: relative;
 }
 
-.search-input {
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: none;
-}
-
-.search-input.visible {
-  display: inline-block;
-}
-
-.search-input.kanban-search {
-  width: 160px;
+.search-wrapper input {
+  width: 100%;
+  padding: 8px 28px 8px 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: #f3f4f6;
+  font-size: 14px;
 }
 
 .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.module-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.module-list li {
+  padding: 10px 14px;
   cursor: pointer;
-  font-size: 18px;
-  margin-left: 6px;
-}
-
-.logo-light {
-  font-size: 16px;
-  font-weight: bold;
-  
-}
-
-.nav-btn {
-  background: #e0e0e0;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.nav-btn.green {
-  background: #4caf50;
-  color: #fff;
-}
-
-.badge {
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  margin-left: 4px;
-}
-
-.profile-icon {
-  background: #ccc;
-  border-radius: 50%;
-  padding: 6px;
-}
-
-/* ---------- Deals Section ---------- */
-.deals-section {
-  padding: 16px;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.deals-header {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.create-btn, .filter-btn {
-  padding: 6px 12px;
-  border: none;
-  background: #3b79d7;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.search-bar {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-}
-
-.deals-tabs {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.tab {
-  padding: 6px 12px;
-  background: #eee;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.tab.active {
-  background: #3b79d7;
-  color: white;
-}
-
-.tab-group span {
-  margin-right: 10px;
-  font-size: 14px;
-  color: #555;
-}
-
-.right-actions {
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
-}
-
-.automation-btn, .extensions-btn {
-  padding: 6px 12px;
-  border: none;
-  background: #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* ---------- Kanban Scroll Wrapper ---------- */
-.kanban-scroll-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 0 0 12px 0;
-  width: 100%;
-  box-sizing: border-box;
-  border-top: 1px solid #ccc;
-}
-
-/* ---------- Kanban Container ---------- */
-.kanban-container {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  min-width: max-content;
-  padding: 20px;
-  background: linear-gradient(to bottom right, #0048ff, #007bff);
-}
-
-/* ---------- Kanban Column ---------- */
-.kanban-column {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  border-radius: 10px;
-  width: 350px;
-  height: 600px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 220px;
-  color: #fff;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.kanban-header {
-  padding: 12px;
-  font-weight: bold;
-  font-size: 14px;
-  text-align: center;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.kanban-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 10px;
-  flex-grow: 1;
-  justify-content: center;
-}
-
-.kanban-amount {
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
-.kanban-add-btn {
-  padding: 8px 14px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.kanban-add-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* ---------- Empty State ---------- */
-.kanban-empty-state {
-  min-width: 200px;
-  margin-left: 15px;
-  padding-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #777;
-  font-size: 14px;
-}
-
-.kanban-empty-state .empty-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-/* ---------- Deals Table ---------- */
-.deals-table-container {
-  background: #fff;
-  margin-top: 20px;
   border-radius: 6px;
-  padding: 10px;
-  border: 1px solid #ddd;
+  color: #d1d5db;
+  transition: background 0.3s, padding-left 0.3s;
+  font-size: 15px;
 }
 
-.deals-header-row {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  font-weight: bold;
-  font-size: 14px;
-  padding: 10px;
-  background: #f0f0f0;
+.module-list li:hover,
+.module-list li.active {
+  background: #2563eb;
+  color: #fff;
+  padding-left: 18px;
 }
 
-.deals-empty-state {
+.teamspace {
+  padding: 10px;
+  background: #0f172a;
+  font-size: 0.85rem;
   text-align: center;
-  padding: 40px;
-  color: #888;
-  height: 550px;
+  color: #9ca3af;
+  margin-top: auto;
+  border-top: 1px solid #374151;
 }
 
-.empty-icon {
-  font-size: 36px;
-  margin-bottom: 10px;
+/* ---------- Main Content ---------- */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #f9fafb;
 }
 
-/* ---------- Invite Popup ---------- */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+.main-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* ---------- Stats ---------- */
+.stats-row {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 20px;
-  z-index: 1000;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.invite-popup {
-  background: #fff;
-  border-radius: 8px;
-  width: 360px;
+.stat-box {
+  flex: 1;
+  background: #e0f2fe;
+  border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-.invite-header {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.invite-content {
-  margin-top: 20px;
-}
-
-.invite-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 12px;
-}
-
-.icon-box {
-  background: #f0f0f0;
-  padding: 10px;
-  border-radius: 6px;
-}
-
-.icon-box.green {
-  background: #d0f0d0;
-}
-
-.small-btn {
-  font-size: 12px;
-  background: #3b79d7;
-  color: white;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-top: 6px;
-}
-
-.invite-collab {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.invite-users-list {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.user-circle {
-  width: 28px;
-  height: 28px;
-  background: #3b79d7;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-icon {
-  font-size: 18px;
-}
-
-
-
-/* ---------- Popup Overlay ---------- */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* ---------- Deal Form Popup ---------- */
-.deal-form-popup {
-  background-color: #fff;
-  width: 400px;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  animation: popup-fade-in 0.3s ease;
-}
-
-.deal-form-popup input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 100%;
-  font-size: 14px;
-}
-
-/* ---------- Form Buttons ---------- */
-.form-save {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.form-cancel {
-  background-color: #e0e0e0;
-  color: #333;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* ---------- Form Group (Amount + Currency) ---------- */
-.form-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-/* ---------- Dropdown Styles ---------- */
-.dropdown-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.dropdown-toggle {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #f8f8f8;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 105%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-  max-height: 180px;
-  overflow-y: auto;
-}
-
-.dropdown-item {
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.dropdown-item:hover {
-  background-color: #f0f0f0;
-}
-
-/* ---------- Smooth Popup Animation ---------- */
-@keyframes popup-fade-in {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-
-
-
-/* Calendar container within the dashboard content */
-.calendar-full-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
-/* Full height and width calendar */
-.react-calendar {
-  flex: 1;
-  width: 100%;
-  height: 500px;
-  max-height: none;
-  background: #e0dfdf;
-  border: 1px solid #313131;
-  border-radius: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  padding: 30px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.react-calendar__viewContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.react-calendar__month-view {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.react-calendar__month-view__days {
-  flex: 1;
-  display: grid !important;
-  grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 4px;
-}
-
-.react-calendar__tile {
-  flex: 1;
-  padding: 12px 0;
-  text-align: center;
-  border-radius: 6px;
-  background-color: #f7f9fc;
-  transition: background 0.3s ease;
   font-weight: 500;
+  color: #0c4a6e;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-  background: #d0e9ff;
+.stat-box:hover {
+  background: #bae6fd;
+  transform: translateY(-2px);
 }
 
-.react-calendar__tile--now {
-  background: #e6f7ff;
-  border: 2px solid #1da1f2;
+.stat-box span {
+  font-size: 20px;
   font-weight: bold;
 }
 
-.react-calendar__tile--active {
-  background: #1da1f2;
+/* ---------- Widgets ---------- */
+.widgets-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.widget {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.widget-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 4px;
+  color: #6b7280;
+  transition: color 0.3s;
+}
+
+.widget-controls button:hover {
+  color: #1d4ed8;
+}
+
+.widget-body {
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.table-heading-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  font-weight: bold;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d1d5db;
+  margin-bottom: 12px;
+  color: #374151;
+}
+
+.empty-message,
+.empty-box p {
+  color: #6b7280;
+  text-align: center;
+  padding: 12px;
+  font-style: italic;
+}
+
+/* ---------- Funnel ---------- */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.funnel-segment {
+  padding: 10px 12px;
+  border-radius: 8px;
   color: white;
-  font-weight: bold;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
 }
+
+.funnel-segment:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.segment-1 { background: #2563eb; }
+.segment-2 { background: #0ea5e9; }
+.segment-3 { background: #10b981; }
+.segment-4 { background: #f59e0b; }
+.segment-5 { background: #ec4899; }
+.segment-6 { background: #8b5cf6; }
+
+/* ---------- Full-width Deal Widget ---------- */
+.widget.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* ---------- Scrollbar Styling ---------- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
