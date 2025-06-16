@@ -1,179 +1,346 @@
-// DashboardPage.jsx
 import React, { useState } from 'react';
-import {
-  Folder, BarChart2, PieChart, Edit, Store, Search,
-  Settings, Bell, LayoutGrid, RefreshCcw, MoreVertical
-} from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import './DashboardPage.css';
 
-export default function DashboardPage() {
-  const navigate = useNavigate();
-  const [activeMainIcon, setActiveMainIcon] = useState('Modules');
-  const [activeModuleItem, setActiveModuleItem] = useState('Home');
+const modulesList = [
+  { icon: "🎯", label: "Leads" },
+  { icon: "👥", label: "Contacts" },
+  { icon: "🏢", label: "Accounts" },
+  { icon: "💼", label: "Deals" },
+  { icon: "📅", label: "Tasks" },
+  { icon: "📆", label: "Meetings" },
+  { icon: "📞", label: "Calls" },
+  { icon: "📦", label: "Products" },
+  { icon: "💬", label: "Quotes" },
+  { icon: "🛒", label: "Sales Orders" },
+  { icon: "🧾", label: "Purchase Orders" },
+  { icon: "📄", label: "Invoices" },
+  { icon: "📥", label: "SalesInbox" },
+  { icon: "📣", label: "Campaigns" },
+  { icon: "🏷️", label: "Vendors" },
+  { icon: "💰", label: "Price Books" },
+  { icon: "📂", label: "Cases" },
+  { icon: "🧠", label: "Solutions" },
+  { icon: "📁", label: "Documents" },
+  { icon: "🔮", label: "Forecasts" },
+];
 
-  const mainIcons = [
-    { name: 'Modules', icon: Folder },
-    { name: 'Reports', icon: BarChart2 },
-    { name: 'Analytics', icon: PieChart },
-    { name: 'My Requests', icon: Edit },
-    { name: 'Marketplace', icon: Store },
-    { name: 'Search', icon: Search },
-  ];
+const DashboardPage = () => {
+  const [activeTab, setActiveTab] = useState("Home");
+  const [activeModule, setActiveModule] = useState("Leads");
+  const [openMenu, setOpenMenu] = useState(null);
 
-  const modules = [
-    'Home', 'Leads', 'Contacts', 'Accounts', 'Deals', 'Tasks',
-    'Meetings', 'Calls', 'Products', 'Quotes', 'Sales Orders',
-    'Purchase Orders', 'Invoices', 'SalesInbox', 'Campaigns',
-    'Vendors', 'Price Books', 'Cases', 'Solutions', 'Documents',
-    'Forecasts'
-  ];
-
-  const funnelStages = [
-    { label: 'Qualification', route: '/qualification', class: 'segment-1' },
-    { label: 'Needs Analysis', route: '/needs-analysis', class: 'segment-2' },
-    { label: 'Value Prop', route: '/value-prop', class: 'segment-3' },
-    { label: 'Identify DM', route: '/identify-dm', class: 'segment-4' },
-    { label: 'Proposal/Quote', route: '/proposal-quote', class: 'segment-5' },
-    { label: 'Negotiation', route: '/negotiation', class: 'segment-6' },
-  ];
+  const toggleMenu = (id) => {
+    setOpenMenu(openMenu === id ? null : id);
+  };
 
   return (
-    <div className="dashboard-container">
-      <aside className="sidebar">
-        <div className="sidebar-icon-bar custom-scrollbar">
-          <div className="sidebar-logo"><Folder size={28} /></div>
-          <div className="main-icons">
-            {mainIcons.map(item => (
+    <div className="dashboard-page">
+      <nav className="top-navbar">
+        {["Modules", "Reports", "Analytics", "Requests", "Marketplace", "Search", "AddNew", "Home", "Setup", "Profile"].map(tab => (
+          <div key={tab} onClick={() => setActiveTab(tab)}>
+            {tab === "Modules" ? "🧩" :
+              tab === "Reports" ? "📊" :
+              tab === "Analytics" ? "📈" :
+              tab === "Requests" ? "🙋" :
+              tab === "Marketplace" ? "🛒" :
+              tab === "Search" ? "🔍" :
+              tab === "AddNew" ? "➕" :
+              tab === "Home" ? "🏠" :
+              tab === "Setup" ? "⚙️" :
+              "👤"} {tab}
+          </div>
+        ))}
+      </nav>
+
+      <div className="main-layout">
+        {activeTab === "Modules" && (
+          <aside className="sidebar">
+            {modulesList.map((item, idx) => (
               <div
-                key={item.name}
-                className={`icon-wrapper ${activeMainIcon === item.name ? 'active' : ''}`}
-                onClick={() => setActiveMainIcon(item.name)}
+                key={idx}
+                className="sidebar-item"
+                onClick={() => setActiveModule(item.label)}
               >
-                <item.icon size={24} />
+                {item.icon} {item.label}
               </div>
             ))}
-          </div>
-          <div className="bottom-icons">
-            <div className="icon-wrapper"><Settings size={24} /></div>
-            <div className="icon-wrapper notification"><Bell size={24} /><span /></div>
-            <div className="icon-wrapper"><LayoutGrid size={24} /></div>
-          </div>
-        </div>
+          </aside>
+        )}
 
-        <div className="sidebar-content custom-scrollbar">
-          {activeMainIcon === 'Modules' && (
+        <div className="main-content">
+          {activeTab === "Home" ? (
             <>
-              <div className="sidebar-header">
-                <h3>Modules</h3>
-                <button className="add-btn">+</button>
+              {/* Welcome Section */}
+              <div className="welcome-box">
+                <div className="icon">🏢</div>
+                <h2>Welcome Admin</h2>
               </div>
-              <div className="search-wrapper">
-                <input placeholder="Search modules..." />
-                <Search size={16} className="search-icon"/>
+
+              {/* Summary Cards */}
+              <div className="summary-cards">
+                <div className="card">My Open Deals <span>0</span></div>
+                <div className="card">My Untouched Deals <span>0</span></div>
+                <div className="card">My Calls Today <span>0</span></div>
+                <div className="card">My Leads <span>0</span></div>
               </div>
-              <ul className="module-list">
-                {modules.map(m => (
-                  <li
-                    key={m}
-                    className={activeModuleItem === m ? 'active' : ''}
-                    onClick={() => setActiveModuleItem(m)}
-                  >
-                    {m}
-                  </li>
-                ))}
-              </ul>
+
+              {/* Tables */}
+              <div className="table-section">
+                {/* Open Tasks */}
+                <div className="table-box">
+                  <div className="box-actions">
+                    <button className="refresh-btn">🔄</button>
+                    <button className="menu-btn" onClick={() => toggleMenu('tasks')}>⋮</button>
+                    {openMenu === 'tasks' && (
+                      <div className="menu-dropdown">
+                        <div>Edit</div>
+                        <div>Delete</div>
+                      </div>
+                    )}
+                  </div>
+                  <h3>My Open Tasks</h3>
+                  <div className="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Subject</th>
+                          <th>Due Date</th>
+                          <th>Status</th>
+                          <th>Priority</th>
+                          <th>Related To</th>
+                          <th>Contact Name</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Meetings */}
+                <div className="table-box">
+                  <div className="box-actions">
+                    <button className="refresh-btn">🔄</button>
+                    <button className="menu-btn" onClick={() => toggleMenu('meetings')}>⋮</button>
+                    {openMenu === 'meetings' && (
+                      <div className="menu-dropdown">
+                        <div>Edit</div>
+                        <div>Delete</div>
+                      </div>
+                    )}
+                  </div>
+                  <h3>My Meetings</h3>
+                  <div className="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Related To</th>
+                          <th>Contact Name</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Deals Closing */}
+                <div className="table-box">
+                  <div className="box-actions">
+                    <button className="refresh-btn">🔄</button>
+                    <button className="menu-btn" onClick={() => toggleMenu('deals')}>⋮</button>
+                    {openMenu === 'deals' && (
+                      <div className="menu-dropdown">
+                        <div>Edit</div>
+                        <div>Delete</div>
+                      </div>
+                    )}
+                  </div>
+                  <h3>My Deals Closing This Month</h3>
+                  <div className="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Deal Name</th>
+                          <th>Amount</th>
+                          <th>Stage</th>
+                          <th>Closing Date</th>
+                          <th>Account Name</th>
+                          <th>Contact Name</th>
+                          <th>Deal Owner</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* Leads box */}
+              <div className="leads-box">
+                <div className="box-actions">
+                  <button className="refresh-btn">🔄</button>
+                  <button className="menu-btn" onClick={() => toggleMenu('leads')}>⋮</button>
+                  {openMenu === 'leads' && (
+                    <div className="menu-dropdown">
+                      <div>Edit</div>
+                      <div>Delete</div>
+                    </div>
+                  )}
+                </div>
+                <h3>Today's Leads</h3>
+                <div className="empty-state">
+                  <p>No Leads found.</p>
+                </div>
+              </div>
+            </>
+          ) : activeTab === "Modules" && activeModule === "Leads" ? (
+            <>
+              <div className="leads-module">
+                <div className="leads-sidebar">
+                  <div className="filter-title">Filter Leads by</div>
+                  <input className="lead-search" placeholder="🔍 Search" />
+                  <div className="filter-group">
+                <details open>
+                   <summary>▾ <strong>System Defined Filters</strong></summary>
+                  <ul className="filter-list">
+      <li><label><input type="checkbox" /> Touched Records</label></li>
+      <li><label><input type="checkbox" /> Untouched Records</label></li>
+      <li><label><input type="checkbox" /> Record Action</label></li>
+      <li><label><input type="checkbox" /> Related Records Action</label></li>
+      <li><label><input type="checkbox" /> Locked</label></li>
+      <li><label><input type="checkbox" /> Latest Email Status</label></li>
+      <li><label><input type="checkbox" /> Activities</label></li>
+      <li><label><input type="checkbox" /> Campaigns</label></li>
+      <li><label><input type="checkbox" /> Cadences</label></li>
+               </ul>
+               
+             </details>
+              </div>
+                    <div className="filter-group">
+                <details open>
+                   <summary>▾ <strong>Filter By Fields</strong></summary>
+                  <ul className="filter-list">
+      <li><label><input type="checkbox" /> Annual Revenue</label></li>
+  <li><label><input type="checkbox" /> City</label></li>
+  <li><label><input type="checkbox" /> Company</label></li>
+  <li><label><input type="checkbox" /> Converted Account</label></li>
+  <li><label><input type="checkbox" /> Converted Contact</label></li>
+  <li><label><input type="checkbox" /> Converted Deal</label></li>
+  <li><label><input type="checkbox" /> Country</label></li>
+  <li><label><input type="checkbox" /> Created By</label></li>
+  <li><label><input type="checkbox" /> Created Time</label></li>
+  <li><label><input type="checkbox" /> Email</label></li>
+  <li><label><input type="checkbox" /> Email Opt Out</label></li>
+  <li><label><input type="checkbox" /> Fax</label></li>
+  <li><label><input type="checkbox" /> First Name</label></li>
+  <li><label><input type="checkbox" /> Industry</label></li>
+  <li><label><input type="checkbox" /> Last Activity Time</label></li>
+  <li><label><input type="checkbox" /> Last Name</label></li>
+  <li><label><input type="checkbox" /> Lead Conversion Time</label></li>
+  <li><label><input type="checkbox" /> Lead Name</label></li>
+  <li><label><input type="checkbox" /> Lead Owner</label></li>
+  <li><label><input type="checkbox" /> Unsubscribed Time</label></li>
+  <li><label><input type="checkbox" /> Website</label></li>
+  <li><label><input type="checkbox" /> Zip Code</label></li>
+  <li><label><input type="checkbox" /> Lead Source</label></li>
+  <li><label><input type="checkbox" /> Lead Status</label></li>
+  <li><label><input type="checkbox" /> Mobile</label></li>
+  <li><label><input type="checkbox" /> Modified By</label></li>
+  <li><label><input type="checkbox" /> Modified Time</label></li>
+  <li><label><input type="checkbox" /> No. of Employees</label></li>
+  <li><label><input type="checkbox" /> Phone</label></li>
+  <li><label><input type="checkbox" /> Rating</label></li>
+  <li><label><input type="checkbox" /> Salutation</label></li>
+  <li><label><input type="checkbox" /> Secondary Email</label></li>
+  <li><label><input type="checkbox" /> Skype ID</label></li>
+  <li><label><input type="checkbox" /> State</label></li>
+  <li><label><input type="checkbox" /> Street</label></li>
+  <li><label><input type="checkbox" /> Tag</label></li>
+  <li><label><input type="checkbox" /> Title</label></li>
+  <li><label><input type="checkbox" /> Twitter</label></li>
+  <li><label><input type="checkbox" /> Unsubscribed Mode</label></li>
+               </ul>
+               
+             </details>
+              </div>
+                  
+                   <div className="filter-group">
+                <details open>
+                   <summary>▾ <strong>Filter By Related Modules</strong></summary>
+                  <ul className="filter-list">
+      <li><label><input type="checkbox" /> Calls</label></li>
+      <li><label><input type="checkbox" /> Emails</label></li>
+      <li><label><input type="checkbox" /> Invitees (Invited Meetings)</label></li>
+      <li><label><input type="checkbox" /> Lead Product Relation (Products)</label></li>
+      <li><label><input type="checkbox" /> Meetings</label></li>
+      <li><label><input type="checkbox" /> Notes</label></li>
+      <li><label><input type="checkbox" /> Tasks</label></li>
+      
+               </ul>
+               
+             </details>
+              </div>
+                </div>
+
+                <div className="leads-table-section">
+                  <div className="lead-table-header">
+                    <span>Total Records <strong>0</strong></span>
+                    <div className="lead-actions">
+                      <select className="lead-dropdown"><option>All Locked Leads</option></select>
+                      <button className="btn">Create Lead</button>
+                      <button className="btn">Actions ⏷</button>
+                    </div>
+                  </div>
+
+                 <div className="leads-table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Lead Name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Lead Source</th>
+        <th>Lead Owner</th>
+        <th>Created By</th>
+        <th>Industry</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colSpan="8" style={{ textAlign: 'center', padding: '30px', color: '#94a3b8' }}>
+          No Leads found.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <h1>{activeTab} Page</h1>
+              <p>This is the {activeTab} content area.</p>
             </>
           )}
         </div>
-        <div className="teamspace">CT CRM Teamspace</div>
-      </aside>
-
-      <main className="main-content custom-scrollbar">
-        <h2>Welcome TSAR IT</h2>
-        <div className="stats-row">
-          {['Open Deals', 'Untouched Deals', 'Calls Today', 'My Leads'].map(label => (
-            <div key={label} className="stat-box">{label}<span>0</span></div>
-          ))}
-        </div>
-
-        <div className="widgets-row">
-          {['Tasks', 'Meetings'].map(w => (
-            <div key={w} className="widget">
-              <div className="widget-header">
-                <h3>My Open {w}</h3>
-                <div className="widget-controls">
-                  <button><RefreshCcw size={18} /></button>
-                  <button><MoreVertical size={18} /></button>
-                </div>
-              </div>
-              <div className="widget-body">
-                <div className="table-heading-row">
-                  {['Subject','Status','Priority','Related','Contact'].map(col => (
-                    <div key={col}>{col}</div>
-                  ))}
-                </div>
-                <div className="empty-message">No {w.toLowerCase()} found.</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="widgets-row">
-          <div className="widget leads-widget">
-            <div className="widget-header">
-              <h3>Today's Leads</h3>
-              <div className="widget-controls">
-                <button><RefreshCcw size={18} /></button>
-                <button><MoreVertical size={18} /></button>
-              </div>
-            </div>
-            <div className="empty-box"><p>No Leads found.</p></div>
-          </div>
-
-          <div className="widget funnel-widget">
-            <div className="widget-header">
-              <h3>My Pipeline Deals By Stage</h3>
-              <div className="widget-controls">
-                <button><RefreshCcw size={18} /></button>
-                <button><MoreVertical size={18} /></button>
-              </div>
-            </div>
-            <div className="funnel">
-              {funnelStages.map(stage => (
-                <div
-                  key={stage.label}
-                  className={`funnel-segment ${stage.class}`}
-                  onClick={() => navigate(stage.route)}
-                >
-                  {stage.label}: <span>0</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="widget full-width">
-          <div className="widget-header">
-            <h3>My Deals Closing This Month</h3>
-            <div className="widget-controls">
-              <button><RefreshCcw size={18} /></button>
-              <button><MoreVertical size={18} /></button>
-            </div>
-          </div>
-          <div className="widget-body">
-            <div className="table-heading-row">
-              {['Deal Name','Amount','Stage','Account','Contact','Owner'].map(col => (
-                <div key={col}>{col}</div>
-              ))}
-            </div>
-            <div className="empty-message">No deals found.</div>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
   );
-}
+};
+
+export default DashboardPage;
+
+
+
+
+
+
+
+
+
+
 
 
 
