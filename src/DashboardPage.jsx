@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './DashboardPage.css';
+import ContactsModule from './modules/ContactsModule';
+
 
 const modulesList = [
   { icon: "🎯", label: "Leads" },
@@ -28,17 +30,150 @@ const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeModule, setActiveModule] = useState("Leads");
   const [openMenu, setOpenMenu] = useState(null);
+  const [showLeadModal, setShowLeadModal] = useState(false);
+      
+ const CreateLeadModal = ({ onClose }) => {
+  return (
+
+    
+    <div className="modal-overlay">
+      <div className="modal-box">
+         
+        <h2>Create Lead</h2>
+         <button className="close-btn" onClick={onClose}>×</button>
+        <form className="create-lead-form">
+      
+
+      <div className="lead-image-section">
+     
+        <div className="lead-image-wrapper">
+          <div className="lead-avatar"></div>
+        </div>
+      </div>
+
+      <h3>Lead Information</h3>
+      <div className="form-grid">
+        <div className="form-group">
+          <label>Lead Owner</label>
+          <input type="text"  />
+        </div>
+        <div className="form-group">
+          <label>Company <span className="required">*</span></label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>First Name</label>
+          <select>
+            <option>-None-</option>
+            <option>Mr.</option>
+            <option>Ms.</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Last Name <span className="required">*</span></label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Title</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Email</label>
+          <input type="email" />
+        </div>
+        <div className="form-group">
+          <label>Phone</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Fax</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Mobile</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Website</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Lead Source</label>
+          <select><option>-None-</option></select>
+        </div>
+        <div className="form-group">
+          <label>Lead Status</label>
+          <select><option>-None-</option></select>
+        </div>
+        <div className="form-group">
+          <label>Industry</label>
+          <select><option>-None-</option></select>
+        </div>
+        <div className="form-group">
+          <label>No. of Employees</label>
+          <input type="number" />
+        </div>
+        <div className="form-group">
+          <label>Annual Revenue</label>
+          <input type="text" placeholder="$" />
+        </div>
+        <div className="form-group">
+          <label>Rating</label>
+          <select><option>-None-</option></select>
+        </div>
+       
+        <div className="form-group">
+          <label>Skype ID</label>
+          <input type="text" />
+        </div>
+        <div className="form-group">
+          <label>Twitter</label>
+          <input type="text" placeholder="@" />
+        </div>
+      </div>
+
+      <h3>Address Information</h3>
+      <div className="form-grid">
+        <div className="form-group"><label>Street</label><input type="text" /></div>
+        <div className="form-group"><label>City</label><input type="text" /></div>
+        <div className="form-group"><label>State</label><input type="text" /></div>
+        <div className="form-group"><label>Zip Code</label><input type="text" /></div>
+        <div className="form-group"><label>Country</label><input type="text" /></div>
+      </div>
+
+      <h3>Description Information</h3>
+      <div className="form-group full-width">
+        <label>Description</label>
+        <textarea rows="3" />
+      </div>
+
+      <div className="form-actions">
+        <button type="submit" className="btn primary">Save</button>
+        <button type="button" className="btn" onClick={onClose}>Cancel</button>
+        <button type="button" className="btn">Save and New</button>
+      </div>
+    </form>
+      </div>
+    </div>
+  );
+}; 
+
+
 
   const toggleMenu = (id) => {
     setOpenMenu(openMenu === id ? null : id);
   };
 
   return (
-    <div className="dashboard-page">
+   <div className="dashboard-page">
       <nav className="top-navbar">
         {["Modules", "Reports", "Analytics", "Requests", "Marketplace", "Search", "AddNew", "Home", "Setup", "Profile"].map(tab => (
-          <div key={tab} onClick={() => setActiveTab(tab)}>
-            {tab === "Modules" ? "🧩" :
+          <div
+  key={tab}
+  className={activeTab === tab ? "active" : ""}
+  onClick={() => setActiveTab(tab)}
+>
+            {tab === "Modules" ? "📁" :
               tab === "Reports" ? "📊" :
               tab === "Analytics" ? "📈" :
               tab === "Requests" ? "🙋" :
@@ -167,6 +302,7 @@ const DashboardPage = () => {
                           <th>Account Name</th>
                           <th>Contact Name</th>
                           <th>Deal Owner</th>
+
                         </tr>
                       </thead>
                     </table>
@@ -286,13 +422,15 @@ const DashboardPage = () => {
                     <span>Total Records <strong>0</strong></span>
                     <div className="lead-actions">
                       <select className="lead-dropdown"><option>All Locked Leads</option></select>
-                      <button className="btn">Create Lead</button>
+                     <button className="btn" onClick={() => setShowLeadModal(true)}>Create Lead</button>
+                      {showLeadModal && <CreateLeadModal onClose={() => setShowLeadModal(false)} />}
+
+
                       <button className="btn">Actions ⏷</button>
                     </div>
                   </div>
-
-                 <div className="leads-table-scroll">
-  <table>
+            <div className="leads-table-scroll">
+  <table className='lead-table'>
     <thead>
       <tr>
         <th>Lead Name</th>
@@ -320,15 +458,20 @@ const DashboardPage = () => {
             </>
           ) : (
             <>
-              <h1>{activeTab} Page</h1>
-              <p>This is the {activeTab} content area.</p>
+             
             </>
           )}
+          {activeTab === "Modules" && activeModule === "Contacts" && <ContactsModule />}
         </div>
+        
       </div>
+        
     </div>
+   
   );
+  
 };
+
 
 export default DashboardPage;
 

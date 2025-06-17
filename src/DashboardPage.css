@@ -20,29 +20,66 @@ html, body {
 }
 
 /* ---------- Top Navbar ---------- */
+/* ---------- Top Navbar ---------- */
 .top-navbar {
-  background: #1e3a8a;
-  padding: 10px 20px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  gap: 10px;
-  color: white;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
   z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
+/* ---------- Navbar Tab ---------- */
 .top-navbar > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  padding: 8px 11px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: all 0.25s ease;
+ 
+  color: #334155;
+  position: relative;
 }
 
 .top-navbar > div:hover {
-  background: #334155;
+  background-color: #99c5f1;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+/* ---------- Emoji Bounce on Hover ---------- */
+.top-navbar > div:hover::before {
+  content: "";
+  animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-4px); }
+  40%  { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+/* ---------- Active Tab Highlight (Optional) ---------- */
+.top-navbar > div.active {
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+  transform: scale(1.05);
+}
+
 
 /* ---------- Layout ---------- */
 .main-layout {
@@ -439,11 +476,12 @@ body::-webkit-scrollbar-thumb,
 .leads-module {
   display: flex;
   height: 100%;
+  width: 100%;
   background: #f8fafc;
 }
 
 .leads-sidebar {
-  width: 270px;
+  width: 250px;
   background: #f1f5f9;
   padding: 20px;
   border-right: 1px solid #e2e8f0;
@@ -490,7 +528,7 @@ body::-webkit-scrollbar-thumb,
 .btn {
   padding: 6px 12px;
   margin-left: 6px;
-  background-color: #3b82f6;
+  background-color: #5388de;
   border: none;
   color: white;
   border-radius: 4px;
@@ -568,4 +606,208 @@ th, td {
   margin-right: 8px;
 }
 
+
+/* ---------- Modal Overlay ---------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 41, 59, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* ---------- Modal Box ---------- */
+.modal-box {
+  background: white;
+  padding: 0;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1100px;
+  height: 90vh;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: popup 0.3s ease;
+  overflow-y: auto;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- Form Container ---------- */
+.create-lead-form {
+  padding: 32px;
+  font-family: 'Segoe UI', sans-serif;
+  background: white;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+h3 {
+  margin: 32px 0 16px;
+  font-size: 18px;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+/* ---------- Lead Image ---------- */
+ .lead-image-wrapper {
+ 
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.lead-avatar {
+  background-image:  url('./assets/0684456b-aa2b-4631-86f7-93ceaf33303c.jpg') no-repeat center center/cover;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  
+}
+
+/* ---------- Grid Form Layout ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Form Group ---------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+input,
+select,
+textarea {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ---------- Required Asterisk ---------- */
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+/* ---------- Actions (Buttons) ---------- */
+.form-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #e5e7eb;
+  color: #1e293b;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #d1d5db;
+}
+
+.btn.primary {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #4338ca;
+}
+
+/* ---------- Scrollbar Styling for Modal ---------- */
+.modal-box::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-box::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.modal-box::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+
+.modal-box {
+  position: relative; /* Required for close-btn positioning */
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 1000px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: popup 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #334155;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  color: #ef4444;
+}
 
