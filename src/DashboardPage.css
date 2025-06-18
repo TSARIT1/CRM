@@ -20,65 +20,79 @@ html, body {
 }
 
 /* ---------- Top Navbar ---------- */
-/* ---------- Top Navbar ---------- */
+
 .top-navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #ffffff;
-  padding: 12px 24px;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
   font-family: 'Segoe UI', sans-serif;
   overflow-x: auto;
   white-space: nowrap;
+  gap: 8px;
+  scrollbar-width: none;
+}
+.top-navbar::-webkit-scrollbar {
+  display: none;
 }
 
-/* ---------- Navbar Tab ---------- */
+/* ---------- Tabs ---------- */
 .top-navbar > div {
   display: flex;
   align-items: center;
-  gap: 6px;
   font-size: 15px;
-  padding: 8px 11px;
-  border-radius: 8px;
+  padding: 10px 19px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.25s ease;
- 
-  color: #334155;
+  transition: all 0.3s ease;
+  color: #1e293b;
   position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  margin-right: 24px; /* <-- Increase this for wider tab spacing */
 }
+
 
 .top-navbar > div:hover {
-  background-color: #99c5f1;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #e0f2fe;
+  color: #0c4a6e;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2);
+  transform: translateY(-1px);
 }
 
-/* ---------- Emoji Bounce on Hover ---------- */
-.top-navbar > div:hover::before {
-  content: "";
-  animation: bounce 0.4s ease;
-}
-
-@keyframes bounce {
-  0%   { transform: translateY(0); }
-  20%  { transform: translateY(-4px); }
-  40%  { transform: translateY(2px); }
-  100% { transform: translateY(0); }
-}
-
-/* ---------- Active Tab Highlight (Optional) ---------- */
+/* ---------- Active Tab ---------- */
 .top-navbar > div.active {
-  background-color: #4f46e5;
-  color: white;
+  background: linear-gradient(to right, #4f46e5, #3b82f6);
+  color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
-  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  transform: scale(1.04);
+  border: none;
 }
+
+/* ---------- Subtle Tab Glow Animation ---------- */
+.top-navbar > div.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  z-index: -1;
+  animation: pulse-glow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 12px rgba(59, 130, 246, 0.8); }
+  100% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.4); }
+}
+
 
 
 /* ---------- Layout ---------- */
@@ -90,7 +104,7 @@ html, body {
 
 /* ---------- Sidebar ---------- */
 .sidebar {
-  width: 220px;
+  width: 260px;
   background: #1e293b;
   color: #fff;
   padding: 20px 10px;
@@ -144,6 +158,7 @@ html, body {
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
+
 
 .card {
   background: #fff;
@@ -481,21 +496,23 @@ body::-webkit-scrollbar-thumb,
 }
 
 .leads-sidebar {
-  width: 250px;
+  width: 280px;
+  height: 280px;
   background: #f1f5f9;
-  padding: 20px;
+  padding: 10px;
   border-right: 1px solid #e2e8f0;
 }
 
 .filter-title {
   font-weight: bold;
   margin-bottom: 10px;
+  
 }
 
 .lead-search {
   width: 100%;
   padding: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 3px;
   border-radius: 6px;
   border: 1px solid #cbd5e1;
 }
@@ -526,8 +543,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 .btn {
-  padding: 6px 12px;
-  margin-left: 6px;
+  padding: 6px 15px;
+  margin-left: 10px;
   background-color: #5388de;
   border: none;
   color: white;
@@ -542,8 +559,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 .lead-table {
-  width: 100%;
-  height: 1000px;
+  width: 5000px;
+  
   border-collapse: collapse;
   min-width: 800px;
 }
@@ -740,35 +757,43 @@ textarea {
 }
 
 /* ---------- Actions (Buttons) ---------- */
-.form-actions {
-  margin-top: 32px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 10px 20px;
+btn {
+  padding: 8px 16px;
   border: none;
   border-radius: 6px;
-  background: #e5e7eb;
-  color: #1e293b;
-  cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .btn:hover {
-  background: #d1d5db;
+  background: #1d4ed8;
 }
 
-.btn.primary {
-  background: #4f46e5;
+.btn.cancel {
+  background-color: #e5e7eb;
+}
+
+.btn.save {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.close-btn {
+  background: #e11d48;
   color: white;
+  margin-top: 16px;
 }
 
-.btn.primary:hover {
-  background: #4338ca;
+.close-btn:hover {
+  background: #be123c;
+}
+
+.btn-close {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* ---------- Scrollbar Styling for Modal ---------- */
@@ -811,3 +836,72 @@ textarea {
   color: #ef4444;
 }
 
+.modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+.modal-body h4 {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #1e293b;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+
+
+.modal-footer {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background: #f3f4f6;
+  border-top: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+.modal-footer { 
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background: #f3f4f6;
+  border-top: 1px solid #ddd;
+}
+
+.contact-filter-group {
+  margin-bottom: 16px;
+}
+
+.filter-group details { 
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  transition: background 0.2s ease;
+}
+
+.filter-group summary { 
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  list-style: none;
+}
+
+.filter-group[open] summary { 
+  margin-bottom: 8px;
+}

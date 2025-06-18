@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './DashboardPage.css';
 import ContactsModule from './modules/ContactsModule';
+import AccountsModule from './modules/AccountsModule';
+import DealsModule from './modules/DealsModule';
+import TasksModule from './modules/TasksModule';
+import MeetingsModule from './modules/MeetingsModule';
+import CallsModule from './modules/CallsModule';
 
 
 const modulesList = [
@@ -338,7 +343,7 @@ const DashboardPage = () => {
                 <details open>
                    <summary>▾ <strong>System Defined Filters</strong></summary>
                   <ul className="filter-list">
-      <li><label><input type="checkbox" /> Touched Records</label></li>
+                <li><label><input type="checkbox" /> Touched Records</label></li>
       <li><label><input type="checkbox" /> Untouched Records</label></li>
       <li><label><input type="checkbox" /> Record Action</label></li>
       <li><label><input type="checkbox" /> Related Records Action</label></li>
@@ -351,53 +356,7 @@ const DashboardPage = () => {
                
              </details>
               </div>
-                    <div className="filter-group">
-                <details open>
-                   <summary>▾ <strong>Filter By Fields</strong></summary>
-                  <ul className="filter-list">
-      <li><label><input type="checkbox" /> Annual Revenue</label></li>
-  <li><label><input type="checkbox" /> City</label></li>
-  <li><label><input type="checkbox" /> Company</label></li>
-  <li><label><input type="checkbox" /> Converted Account</label></li>
-  <li><label><input type="checkbox" /> Converted Contact</label></li>
-  <li><label><input type="checkbox" /> Converted Deal</label></li>
-  <li><label><input type="checkbox" /> Country</label></li>
-  <li><label><input type="checkbox" /> Created By</label></li>
-  <li><label><input type="checkbox" /> Created Time</label></li>
-  <li><label><input type="checkbox" /> Email</label></li>
-  <li><label><input type="checkbox" /> Email Opt Out</label></li>
-  <li><label><input type="checkbox" /> Fax</label></li>
-  <li><label><input type="checkbox" /> First Name</label></li>
-  <li><label><input type="checkbox" /> Industry</label></li>
-  <li><label><input type="checkbox" /> Last Activity Time</label></li>
-  <li><label><input type="checkbox" /> Last Name</label></li>
-  <li><label><input type="checkbox" /> Lead Conversion Time</label></li>
-  <li><label><input type="checkbox" /> Lead Name</label></li>
-  <li><label><input type="checkbox" /> Lead Owner</label></li>
-  <li><label><input type="checkbox" /> Unsubscribed Time</label></li>
-  <li><label><input type="checkbox" /> Website</label></li>
-  <li><label><input type="checkbox" /> Zip Code</label></li>
-  <li><label><input type="checkbox" /> Lead Source</label></li>
-  <li><label><input type="checkbox" /> Lead Status</label></li>
-  <li><label><input type="checkbox" /> Mobile</label></li>
-  <li><label><input type="checkbox" /> Modified By</label></li>
-  <li><label><input type="checkbox" /> Modified Time</label></li>
-  <li><label><input type="checkbox" /> No. of Employees</label></li>
-  <li><label><input type="checkbox" /> Phone</label></li>
-  <li><label><input type="checkbox" /> Rating</label></li>
-  <li><label><input type="checkbox" /> Salutation</label></li>
-  <li><label><input type="checkbox" /> Secondary Email</label></li>
-  <li><label><input type="checkbox" /> Skype ID</label></li>
-  <li><label><input type="checkbox" /> State</label></li>
-  <li><label><input type="checkbox" /> Street</label></li>
-  <li><label><input type="checkbox" /> Tag</label></li>
-  <li><label><input type="checkbox" /> Title</label></li>
-  <li><label><input type="checkbox" /> Twitter</label></li>
-  <li><label><input type="checkbox" /> Unsubscribed Mode</label></li>
-               </ul>
-               
-             </details>
-              </div>
+                    
                   
                    <div className="filter-group">
                 <details open>
@@ -462,6 +421,11 @@ const DashboardPage = () => {
             </>
           )}
           {activeTab === "Modules" && activeModule === "Contacts" && <ContactsModule />}
+          {activeTab === "Modules" && activeModule === "Accounts" && <AccountsModule />}
+          {activeTab === "Modules" && activeModule === "Deals" && <DealsModule />}
+           {activeTab === "Modules" && activeModule === "Tasks" && <TasksModule />}
+  {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
+  {activeTab === "Modules" && activeModule === "Calls" && <CallsModule />}
         </div>
         
       </div>
