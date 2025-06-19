@@ -1,34 +1,65 @@
 import React, { useState } from 'react';
 import './DashboardPage.css';
+import { SiGoogleads } from "react-icons/si";
+import { RiContactsBookFill } from "react-icons/ri";
+import { TbReportSearch } from "react-icons/tb";
+import { MdManageAccounts } from "react-icons/md";
+import { IoMdAnalytics } from "react-icons/io";
+import { SiCoinmarketcap } from "react-icons/si";
+import { FaSearch } from "react-icons/fa";
+import { MdOutlineWifiProtectedSetup } from "react-icons/md";
+import { MdOutlineAddCircle } from "react-icons/md";
+import { IoHomeOutline } from "react-icons/io5";
+import { IoGitPullRequestSharp } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { VscFileSubmodule } from "react-icons/vsc";
+import { FaIdeal } from "react-icons/fa6";
 import ContactsModule from './modules/ContactsModule';
 import AccountsModule from './modules/AccountsModule';
 import DealsModule from './modules/DealsModule';
 import TasksModule from './modules/TasksModule';
 import MeetingsModule from './modules/MeetingsModule';
 import CallsModule from './modules/CallsModule';
+import ProductsModule from './modules/ProductsModule';
+import { GrTask } from "react-icons/gr";
+import { MdOutlineMeetingRoom } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { BsChatSquareQuote } from "react-icons/bs";
+import { FaBorderStyle } from "react-icons/fa";
+import { BiPurchaseTagAlt } from "react-icons/bi";
+import { LiaFileInvoiceSolid } from "react-icons/lia";
+import { BsBoxSeamFill } from "react-icons/bs";
+import { MdOutlineCampaign } from "react-icons/md";
+import { PiOvenDuotone } from "react-icons/pi";
+import { RiPriceTag2Line } from "react-icons/ri";
+import { IoBriefcaseSharp } from "react-icons/io5";
+import { AiOutlineSolution } from "react-icons/ai";
+import { IoDocumentOutline } from "react-icons/io5";
+import { SiFarcaster } from "react-icons/si";
 
 
 const modulesList = [
-  { icon: "🎯", label: "Leads" },
-  { icon: "👥", label: "Contacts" },
-  { icon: "🏢", label: "Accounts" },
-  { icon: "💼", label: "Deals" },
-  { icon: "📅", label: "Tasks" },
-  { icon: "📆", label: "Meetings" },
-  { icon: "📞", label: "Calls" },
-  { icon: "📦", label: "Products" },
-  { icon: "💬", label: "Quotes" },
-  { icon: "🛒", label: "Sales Orders" },
-  { icon: "🧾", label: "Purchase Orders" },
-  { icon: "📄", label: "Invoices" },
-  { icon: "📥", label: "SalesInbox" },
-  { icon: "📣", label: "Campaigns" },
-  { icon: "🏷️", label: "Vendors" },
-  { icon: "💰", label: "Price Books" },
-  { icon: "📂", label: "Cases" },
-  { icon: "🧠", label: "Solutions" },
-  { icon: "📁", label: "Documents" },
-  { icon: "🔮", label: "Forecasts" },
+  { icon:<SiGoogleads />, label: " Leads" },
+  { icon: <RiContactsBookFill />, label: "Contacts" },
+  { icon: <MdManageAccounts />, label: "Accounts" },
+  { icon: < FaIdeal />, label: "Deals" },
+  { icon: < GrTask />, label: "Tasks" },
+  { icon: < MdOutlineMeetingRoom />, label: "Meetings" },
+  { icon: < IoCall />, label: "Calls" },
+  { icon: < MdOutlineProductionQuantityLimits />, label: "Products" },
+  { icon: < BsChatSquareQuote/>, label: "Quotes" },
+  { icon: < FaBorderStyle />, label: "Sales Orders" },
+  { icon: < BiPurchaseTagAlt /> , label: "Purchase Orders" },
+  { icon: < LiaFileInvoiceSolid /> , label: "Invoices" },
+  { icon: < BsBoxSeamFill />, label: "SalesInbox" },
+  { icon: < MdOutlineCampaign />, label: "Campaigns" },
+  { icon: <PiOvenDuotone />, label: "Vendors" },
+  { icon: < RiPriceTag2Line />, label: "Price Books" },
+  { icon: < IoBriefcaseSharp/>, label: "Cases" },
+  { icon: < AiOutlineSolution />, label: "Solutions" },
+  { icon: < IoDocumentOutline />, label: "Documents" },
+  { icon: < SiFarcaster />, label: "Forecasts" },
 ];
 
 const DashboardPage = () => {
@@ -177,23 +208,24 @@ const DashboardPage = () => {
   key={tab}
   className={activeTab === tab ? "active" : ""}
   onClick={() => setActiveTab(tab)}
->
-            {tab === "Modules" ? "📁" :
-              tab === "Reports" ? "📊" :
-              tab === "Analytics" ? "📈" :
-              tab === "Requests" ? "🙋" :
-              tab === "Marketplace" ? "🛒" :
-              tab === "Search" ? "🔍" :
-              tab === "AddNew" ? "➕" :
-              tab === "Home" ? "🏠" :
-              tab === "Setup" ? "⚙️" :
-              "👤"} {tab}
+>{
+              tab === "Reports" ?  < TbReportSearch /> :
+              tab === "Analytics" ? < IoMdAnalytics /> :
+              tab === "Requests" ? < IoGitPullRequestSharp /> :
+              tab === "Marketplace" ? < SiCoinmarketcap /> :
+              tab === "Search" ? < FaSearch /> :
+              tab === "AddNew" ? < MdOutlineAddCircle /> :
+              tab === "Home" ? < IoHomeOutline /> :
+              tab === "Setup" ? < MdOutlineWifiProtectedSetup /> :
+              tab === "Modules" ?  < VscFileSubmodule /> :
+              tab === "Profile" ?  < CgProfile /> :
+              ""} {tab}
           </div>
         ))}
       </nav>
 
       <div className="main-layout">
-        {activeTab === "Modules" && (
+        {activeTab ===  "Modules" && (
           <aside className="sidebar">
             {modulesList.map((item, idx) => (
               <div
@@ -426,6 +458,7 @@ const DashboardPage = () => {
            {activeTab === "Modules" && activeModule === "Tasks" && <TasksModule />}
   {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
   {activeTab === "Modules" && activeModule === "Calls" && <CallsModule />}
+  {activeTab === "Modules" && activeModule === "Products" && <ProductsModule />}
         </div>
         
       </div>
@@ -438,7 +471,6 @@ const DashboardPage = () => {
 
 
 export default DashboardPage;
-
 
 
 
