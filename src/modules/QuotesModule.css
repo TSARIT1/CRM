@@ -1,0 +1,153 @@
+/* QuotesModule.css */
+
+.quote-page {
+  padding: 40px;
+  background-color: #f9fafb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.quote-landing {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.quote-icon {
+  width: 110px;
+}
+
+.quote-btn-primary {
+  background: linear-gradient(to right, #4f46e5, #6366f1);
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.quote-btn-secondary {
+  background: #e2e8f0;
+  border: none;
+  color: #1e293b;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.quote-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(30, 41, 59, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 40px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.quote-modal-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 1250px;
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.quote-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-close-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.quote-modal-body {
+  margin-top: 20px;
+}
+
+.quote-section-title {
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+.quote-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 30px;
+  margin-top: 15px;
+}
+
+.quote-input,
+.quote-select,
+.quote-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+
+.quote-table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.quote-table th,
+.quote-table td {
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  text-align: left;
+}
+
+.quote-table th {
+  background-color: #f1f5f9;
+  font-size: 14px;
+}
+
+.quote-add-row {
+  margin-top: 12px;
+  border: 1px solid #4f46e5;
+  background: transparent;
+  color: #4f46e5;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.quote-textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.quote-modal-footer {
+  margin-top: 30px;
+  text-align: right;
+}
+

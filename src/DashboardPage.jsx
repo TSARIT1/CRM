@@ -23,6 +23,7 @@ import CallsModule from './modules/CallsModule';
 import ProductsModule from './modules/ProductsModule';
 import { GrTask } from "react-icons/gr";
 import { MdOutlineMeetingRoom } from "react-icons/md";
+import { FiRefreshCcw } from "react-icons/fi";
 import { IoCall } from "react-icons/io5";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BsChatSquareQuote } from "react-icons/bs";
@@ -37,6 +38,12 @@ import { IoBriefcaseSharp } from "react-icons/io5";
 import { AiOutlineSolution } from "react-icons/ai";
 import { IoDocumentOutline } from "react-icons/io5";
 import { SiFarcaster } from "react-icons/si";
+import QuotesModule from './modules/QuotesModule';
+import SalesOrdersModule from './modules/SalesOrdersModule';
+import PurchaseOrdersModule from './modules/PurchaseOrdersModule';
+import InvoicesModule from './modules/InvoicesModule';
+import SalesInbox from './modules/SalesInbox';
+import CampaignsModule from './modules/CampaignsModule';
 
 
 const modulesList = [
@@ -261,7 +268,7 @@ const DashboardPage = () => {
                 {/* Open Tasks */}
                 <div className="table-box">
                   <div className="box-actions">
-                    <button className="refresh-btn">🔄</button>
+                    <button className="refresh-btn"><FiRefreshCcw /></button>
                     <button className="menu-btn" onClick={() => toggleMenu('tasks')}>⋮</button>
                     {openMenu === 'tasks' && (
                       <div className="menu-dropdown">
@@ -290,7 +297,7 @@ const DashboardPage = () => {
                 {/* Meetings */}
                 <div className="table-box">
                   <div className="box-actions">
-                    <button className="refresh-btn">🔄</button>
+                    <button className="refresh-btn"><FiRefreshCcw /></button>
                     <button className="menu-btn" onClick={() => toggleMenu('meetings')}>⋮</button>
                     {openMenu === 'meetings' && (
                       <div className="menu-dropdown">
@@ -318,7 +325,7 @@ const DashboardPage = () => {
                 {/* Deals Closing */}
                 <div className="table-box">
                   <div className="box-actions">
-                    <button className="refresh-btn">🔄</button>
+                    <button className="refresh-btn"><FiRefreshCcw /></button>
                     <button className="menu-btn" onClick={() => toggleMenu('deals')}>⋮</button>
                     {openMenu === 'deals' && (
                       <div className="menu-dropdown">
@@ -350,7 +357,7 @@ const DashboardPage = () => {
               {/* Leads box */}
               <div className="leads-box">
                 <div className="box-actions">
-                  <button className="refresh-btn">🔄</button>
+                  <button className="refresh-btn"><FiRefreshCcw /></button>
                   <button className="menu-btn" onClick={() => toggleMenu('leads')}>⋮</button>
                   {openMenu === 'leads' && (
                     <div className="menu-dropdown">
@@ -370,7 +377,7 @@ const DashboardPage = () => {
               <div className="leads-module">
                 <div className="leads-sidebar">
                   <div className="filter-title">Filter Leads by</div>
-                  <input className="lead-search" placeholder="🔍 Search" />
+                  <input className="lead-search" placeholder=  " 🔍  Search" />
                   <div className="filter-group">
                 <details open>
                    <summary>▾ <strong>System Defined Filters</strong></summary>
@@ -456,9 +463,15 @@ const DashboardPage = () => {
           {activeTab === "Modules" && activeModule === "Accounts" && <AccountsModule />}
           {activeTab === "Modules" && activeModule === "Deals" && <DealsModule />}
            {activeTab === "Modules" && activeModule === "Tasks" && <TasksModule />}
-  {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
-  {activeTab === "Modules" && activeModule === "Calls" && <CallsModule />}
-  {activeTab === "Modules" && activeModule === "Products" && <ProductsModule />}
+            {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
+          {activeTab === "Modules" && activeModule === "Calls" && <CallsModule />}
+            {activeTab === "Modules" && activeModule === "Products" && <ProductsModule />}
+           {activeTab === "Modules" && activeModule === "Quotes" && <QuotesModule />}
+           {activeTab === "Modules" && activeModule === "Sales Orders" && <SalesOrdersModule />}
+           {activeTab === "Modules" && activeModule === "Purchase Orders" && <PurchaseOrdersModule />}
+            {activeTab === "Modules" && activeModule === "Invoices" && <InvoicesModule />}
+            {activeTab === "Modules" && activeModule === "SalesInbox" && <SalesInbox />}
+            {activeTab === "Modules" && activeModule === "Campaigns" && <CampaignsModule />}
         </div>
         
       </div>

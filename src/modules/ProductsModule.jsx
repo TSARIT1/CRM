@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProductsModule.css';
 import productImg from '../assets/prodcuts.png'; // your illustration image path
+import { SiGoogleforms } from "react-icons/si";
 
 const CreateProductModal = ({ onClose }) => {
   return (
@@ -72,7 +73,7 @@ const ImportProductModal = ({ onClose }) => {
         <div className="modal-body import-body">
           <div className="import-options">
             <div className="import-box">
-              <h3>📄 From File</h3>
+              <h3><SiGoogleforms /> From File</h3>
               <p>Drag and drop your file here.<br />- or -</p>
               <button className="btn-primary">Browse</button>
               <p>Download sample file <a href="#">CSV</a> or <a href="#">XLSX</a></p>
