@@ -1,0 +1,186 @@
+/* ------------ Base Layout ------------ */
+.documents-wrapper {
+  display: flex;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ------------ Sidebar ------------ */
+.documents-sidebar {
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-header {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.team-folder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.plus-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #2563eb;
+}
+
+.open-drive {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: auto;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.open-drive:hover {
+  background: #1d4ed8;
+}
+
+/* ------------ Content ------------ */
+.documents-content {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+}
+
+/* ------------ Breadcrumb ------------ */
+.breadcrumb {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.zoho-crm-btn {
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* ------------ Dropdowns ------------ */
+.dropdown {
+  position: absolute;
+  top: 30px;
+  left: 160px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 10;
+  min-width: 200px;
+}
+
+.dropdown div {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown div:hover {
+  background-color: #f1f5f9;
+}
+
+.team-dropdown {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  width: 180px;
+}
+
+.main-menu {
+  top: 24px;
+  left: 90px;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 180px;
+  min-width: 180px;
+}
+
+.labelmenu {
+  position: absolute;
+  top: 0;
+  left: 180px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  width: 220px;
+}
+
+.labelmenu input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.labelmenu p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 5px 0;
+}
+
+.create-label {
+  color: #2563eb;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* ------------ Icons ------------ */
+.right-arrow {
+  float: right;
+  margin-top: 2px;
+}
+
+/* ------------ Empty State ------------ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 60px);
+  text-align: center;
+}
+
+.empty-img {
+  width: 200px;
+  height: 150px;
+  background: url('../assets/empty-docs.png') center/contain no-repeat;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+
+
+

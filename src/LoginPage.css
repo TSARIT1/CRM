@@ -9,6 +9,8 @@ html, body {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
+  
+ 
 }
 
 /* ---------- Wrapper ---------- */
@@ -21,6 +23,7 @@ html, body {
   justify-content: center;
   align-items: center;
   animation: fadeIn 1s ease-in-out;
+  
 }
 
 /* ---------- Login Card ---------- */
@@ -70,7 +73,7 @@ label {
 input {
   padding: 12px;
   margin-bottom: 16px;
-  border: 1px solid #545252;
+  border: 1px solid #292828;
   border-radius: 6px;
   font-size: 14px;
   transition: border-color 0.3s, background-color 0.3s;

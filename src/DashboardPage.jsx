@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './DashboardPage.css';
+
 import { SiGoogleads } from "react-icons/si";
 import { RiContactsBookFill } from "react-icons/ri";
 import { TbReportSearch } from "react-icons/tb";
@@ -14,13 +15,7 @@ import { IoGitPullRequestSharp } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { FaIdeal } from "react-icons/fa6";
-import ContactsModule from './modules/ContactsModule';
-import AccountsModule from './modules/AccountsModule';
-import DealsModule from './modules/DealsModule';
-import TasksModule from './modules/TasksModule';
-import MeetingsModule from './modules/MeetingsModule';
-import CallsModule from './modules/CallsModule';
-import ProductsModule from './modules/ProductsModule';
+
 import { GrTask } from "react-icons/gr";
 import { MdOutlineMeetingRoom } from "react-icons/md";
 import { FiRefreshCcw } from "react-icons/fi";
@@ -38,206 +33,125 @@ import { IoBriefcaseSharp } from "react-icons/io5";
 import { AiOutlineSolution } from "react-icons/ai";
 import { IoDocumentOutline } from "react-icons/io5";
 import { SiFarcaster } from "react-icons/si";
+
+// Module Components
+import LeadsModule from './modules/LeadsModule';
+import ContactsModule from './modules/ContactsModule';
+import AccountsModule from './modules/AccountsModule';
+import DealsModule from './modules/DealsModule';
+import TasksModule from './modules/TasksModule';
+import MeetingsModule from './modules/MeetingsModule';
+import CallsModule from './modules/CallsModule';
+import ProductsModule from './modules/ProductsModule';
 import QuotesModule from './modules/QuotesModule';
 import SalesOrdersModule from './modules/SalesOrdersModule';
 import PurchaseOrdersModule from './modules/PurchaseOrdersModule';
 import InvoicesModule from './modules/InvoicesModule';
 import SalesInbox from './modules/SalesInbox';
 import CampaignsModule from './modules/CampaignsModule';
+import VendorsModule from './modules/VendorsModule';
+import CasesModule from './modules/CasesModule';
+import PriceBooksModule from './modules/PriceBooksModule';
+import SolutionsModule from './modules/SolutionsModule';
+import DocumentsModule from './modules/DocumentsModule';
+
+
+//Reports
+import AllReportsPage from './Reports/AllReportsPage';
 
 
 const modulesList = [
-  { icon:<SiGoogleads />, label: " Leads" },
+  { icon: <SiGoogleads />, label: "Leads" },
   { icon: <RiContactsBookFill />, label: "Contacts" },
   { icon: <MdManageAccounts />, label: "Accounts" },
-  { icon: < FaIdeal />, label: "Deals" },
-  { icon: < GrTask />, label: "Tasks" },
-  { icon: < MdOutlineMeetingRoom />, label: "Meetings" },
-  { icon: < IoCall />, label: "Calls" },
-  { icon: < MdOutlineProductionQuantityLimits />, label: "Products" },
-  { icon: < BsChatSquareQuote/>, label: "Quotes" },
-  { icon: < FaBorderStyle />, label: "Sales Orders" },
-  { icon: < BiPurchaseTagAlt /> , label: "Purchase Orders" },
-  { icon: < LiaFileInvoiceSolid /> , label: "Invoices" },
-  { icon: < BsBoxSeamFill />, label: "SalesInbox" },
-  { icon: < MdOutlineCampaign />, label: "Campaigns" },
+  { icon: <FaIdeal />, label: "Deals" },
+  { icon: <GrTask />, label: "Tasks" },
+  { icon: <MdOutlineMeetingRoom />, label: "Meetings" },
+  { icon: <IoCall />, label: "Calls" },
+  { icon: <MdOutlineProductionQuantityLimits />, label: "Products" },
+  { icon: <BsChatSquareQuote />, label: "Quotes" },
+  { icon: <FaBorderStyle />, label: "Sales Orders" },
+  { icon: <BiPurchaseTagAlt />, label: "Purchase Orders" },
+  { icon: <LiaFileInvoiceSolid />, label: "Invoices" },
+  { icon: <BsBoxSeamFill />, label: "SalesInbox" },
+  { icon: <MdOutlineCampaign />, label: "Campaigns" },
   { icon: <PiOvenDuotone />, label: "Vendors" },
-  { icon: < RiPriceTag2Line />, label: "Price Books" },
-  { icon: < IoBriefcaseSharp/>, label: "Cases" },
-  { icon: < AiOutlineSolution />, label: "Solutions" },
-  { icon: < IoDocumentOutline />, label: "Documents" },
-  { icon: < SiFarcaster />, label: "Forecasts" },
+  { icon: <RiPriceTag2Line />, label: "Price Books" },
+  { icon: <IoBriefcaseSharp />, label: "Cases" },
+  { icon: <AiOutlineSolution />, label: "Solutions" },
+  { icon: <IoDocumentOutline />, label: "Documents" },
+  { icon: <SiFarcaster />, label: "Forecasts" },
 ];
+
+const requestReportsList = [
+  { label: "All Reports" },
+  { label: "My Reports" },
+  { label: "Favorites" },
+  { label: "Recently Viewed" },
+  { label: "Shared Reports" },
+  { label: "Scheduled Reports" },
+  { label: "Recently Deleted" },
+  { label: "Account and Contact Reports" },
+  { label: "Deal Reports" },
+  { label: "Lead Reports" },
+  { label: "Campaign Reports" },
+  { label: "Case and Solution Reports" },
+  { label: "Product Reports" },
+  { label: "Vendor Reports" },
+  { label: "Quote Reports" },
+  { label: "Sales Order Reports" },
+  { label: "Purchase Order Reports" },
+  { label: "Invoice Reports" },
+  { label: "Sales Metrics Reports" },
+  { label: "Email Reports" },
+   { label: "Meeting Reports" },
+];
+
 
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeModule, setActiveModule] = useState("Leads");
+  const [activeReports, setActiveReports] = useState("Meeting Reports");
   const [openMenu, setOpenMenu] = useState(null);
-  const [showLeadModal, setShowLeadModal] = useState(false);
-      
- const CreateLeadModal = ({ onClose }) => {
-  return (
 
-    
-    <div className="modal-overlay">
-      <div className="modal-box">
-         
-        <h2>Create Lead</h2>
-         <button className="close-btn" onClick={onClose}>×</button>
-        <form className="create-lead-form">
-      
-
-      <div className="lead-image-section">
-     
-        <div className="lead-image-wrapper">
-          <div className="lead-avatar"></div>
-        </div>
-      </div>
-
-      <h3>Lead Information</h3>
-      <div className="form-grid">
-        <div className="form-group">
-          <label>Lead Owner</label>
-          <input type="text"  />
-        </div>
-        <div className="form-group">
-          <label>Company <span className="required">*</span></label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>First Name</label>
-          <select>
-            <option>-None-</option>
-            <option>Mr.</option>
-            <option>Ms.</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Last Name <span className="required">*</span></label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Title</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input type="email" />
-        </div>
-        <div className="form-group">
-          <label>Phone</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Fax</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Mobile</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Website</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Lead Source</label>
-          <select><option>-None-</option></select>
-        </div>
-        <div className="form-group">
-          <label>Lead Status</label>
-          <select><option>-None-</option></select>
-        </div>
-        <div className="form-group">
-          <label>Industry</label>
-          <select><option>-None-</option></select>
-        </div>
-        <div className="form-group">
-          <label>No. of Employees</label>
-          <input type="number" />
-        </div>
-        <div className="form-group">
-          <label>Annual Revenue</label>
-          <input type="text" placeholder="$" />
-        </div>
-        <div className="form-group">
-          <label>Rating</label>
-          <select><option>-None-</option></select>
-        </div>
-       
-        <div className="form-group">
-          <label>Skype ID</label>
-          <input type="text" />
-        </div>
-        <div className="form-group">
-          <label>Twitter</label>
-          <input type="text" placeholder="@" />
-        </div>
-      </div>
-
-      <h3>Address Information</h3>
-      <div className="form-grid">
-        <div className="form-group"><label>Street</label><input type="text" /></div>
-        <div className="form-group"><label>City</label><input type="text" /></div>
-        <div className="form-group"><label>State</label><input type="text" /></div>
-        <div className="form-group"><label>Zip Code</label><input type="text" /></div>
-        <div className="form-group"><label>Country</label><input type="text" /></div>
-      </div>
-
-      <h3>Description Information</h3>
-      <div className="form-group full-width">
-        <label>Description</label>
-        <textarea rows="3" />
-      </div>
-
-      <div className="form-actions">
-        <button type="submit" className="btn primary">Save</button>
-        <button type="button" className="btn" onClick={onClose}>Cancel</button>
-        <button type="button" className="btn">Save and New</button>
-      </div>
-    </form>
-      </div>
-    </div>
-  );
-}; 
-
-
-
-  const toggleMenu = (id) => {
-    setOpenMenu(openMenu === id ? null : id);
+  const toggleMenu = (menuName) => {
+    setOpenMenu(prev => (prev === menuName ? null : menuName));
   };
 
   return (
-   <div className="dashboard-page">
+    <div className="dashboard-page">
       <nav className="top-navbar">
         {["Modules", "Reports", "Analytics", "Requests", "Marketplace", "Search", "AddNew", "Home", "Setup", "Profile"].map(tab => (
           <div
-  key={tab}
-  className={activeTab === tab ? "active" : ""}
-  onClick={() => setActiveTab(tab)}
->{
-              tab === "Reports" ?  < TbReportSearch /> :
-              tab === "Analytics" ? < IoMdAnalytics /> :
-              tab === "Requests" ? < IoGitPullRequestSharp /> :
-              tab === "Marketplace" ? < SiCoinmarketcap /> :
-              tab === "Search" ? < FaSearch /> :
-              tab === "AddNew" ? < MdOutlineAddCircle /> :
-              tab === "Home" ? < IoHomeOutline /> :
-              tab === "Setup" ? < MdOutlineWifiProtectedSetup /> :
-              tab === "Modules" ?  < VscFileSubmodule /> :
-              tab === "Profile" ?  < CgProfile /> :
-              ""} {tab}
+            key={tab}
+            className={activeTab === tab ? "active" : ""}
+            onClick={() => setActiveTab(tab)}
+          >
+            <span className="nav-icon">
+              {tab === "Reports" ? <TbReportSearch /> :
+                tab === "Analytics" ? <IoMdAnalytics /> :
+                tab === "Requests" ? <IoGitPullRequestSharp /> :
+                tab === "Marketplace" ? <SiCoinmarketcap /> :
+                tab === "Search" ? <FaSearch /> :
+                tab === "AddNew" ? <MdOutlineAddCircle /> :
+                tab === "Home" ? <IoHomeOutline /> :
+                tab === "Setup" ? <MdOutlineWifiProtectedSetup /> :
+                tab === "Modules" ? <VscFileSubmodule /> :
+                tab === "Profile" ? <CgProfile /> : ""}
+            </span>
+            <span className="nav-label">{tab}</span>
+            
           </div>
         ))}
       </nav>
 
       <div className="main-layout">
-        {activeTab ===  "Modules" && (
+        {activeTab === "Modules" && (
           <aside className="sidebar">
             {modulesList.map((item, idx) => (
               <div
                 key={idx}
-                className="sidebar-item"
+                className={`sidebar-item ${activeModule === item.label ? 'active' : ''}`}
                 onClick={() => setActiveModule(item.label)}
               >
                 {item.icon} {item.label}
@@ -246,16 +160,28 @@ const DashboardPage = () => {
           </aside>
         )}
 
+        {activeTab === "Reports" && (
+          <aside className="sidebar">
+            {requestReportsList.map((item, idx) => (
+              <div
+                key={idx}
+                className={`sidebar-item ${activeReports === item.label ? 'active' : ''}`}
+                onClick={() => setActiveReports(item.label)}
+              >
+                {item.label}
+              </div>
+            ))}
+          </aside>
+        )}
+
         <div className="main-content">
-          {activeTab === "Home" ? (
+          {activeTab === "Home" && (
             <>
-              {/* Welcome Section */}
               <div className="welcome-box">
                 <div className="icon">🏢</div>
                 <h2>Welcome Admin</h2>
               </div>
 
-              {/* Summary Cards */}
               <div className="summary-cards">
                 <div className="card">My Open Deals <span>0</span></div>
                 <div className="card">My Untouched Deals <span>0</span></div>
@@ -263,98 +189,44 @@ const DashboardPage = () => {
                 <div className="card">My Leads <span>0</span></div>
               </div>
 
-              {/* Tables */}
               <div className="table-section">
-                {/* Open Tasks */}
-                <div className="table-box">
-                  <div className="box-actions">
-                    <button className="refresh-btn"><FiRefreshCcw /></button>
-                    <button className="menu-btn" onClick={() => toggleMenu('tasks')}>⋮</button>
-                    {openMenu === 'tasks' && (
-                      <div className="menu-dropdown">
-                        <div>Edit</div>
-                        <div>Delete</div>
-                      </div>
-                    )}
+                {["tasks", "meetings", "deals"].map(section => (
+                  <div className="table-box" key={section}>
+                    <div className="box-actions">
+                      <button className="refresh-btn"><FiRefreshCcw /></button>
+                      <button className="menu-btn" onClick={() => toggleMenu(section)}>⋮</button>
+                      {openMenu === section && (
+                        <div className="menu-dropdown">
+                          <div>Edit</div>
+                          <div>Delete</div>
+                        </div>
+                      )}
+                    </div>
+                    <h3>{section === 'tasks' ? "My Open Tasks" :
+                        section === 'meetings' ? "My Meetings" :
+                        "My Deals Closing This Month"}</h3>
+                    <div className="table-scroll">
+                      
+                      <table>
+                        <thead>
+                          <tr>
+                            {section === "tasks" && <>
+                              <th>Subject</th><th>Due Date</th><th>Status</th><th>Priority</th><th>Related To</th><th>Contact Name</th>
+                            </>}
+                            {section === "meetings" && <>
+                              <th>Title</th><th>From</th><th>To</th><th>Related To</th><th>Contact Name</th>
+                            </>}
+                            {section === "deals" && <>
+                              <th>Deal Name</th><th>Amount</th><th>Stage</th><th>Closing Date</th><th>Account Name</th><th>Contact Name</th><th>Deal Owner</th>
+                            </>}
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
                   </div>
-                  <h3>My Open Tasks</h3>
-                  <div className="table-scroll">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Subject</th>
-                          <th>Due Date</th>
-                          <th>Status</th>
-                          <th>Priority</th>
-                          <th>Related To</th>
-                          <th>Contact Name</th>
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
-                </div>
-
-                {/* Meetings */}
-                <div className="table-box">
-                  <div className="box-actions">
-                    <button className="refresh-btn"><FiRefreshCcw /></button>
-                    <button className="menu-btn" onClick={() => toggleMenu('meetings')}>⋮</button>
-                    {openMenu === 'meetings' && (
-                      <div className="menu-dropdown">
-                        <div>Edit</div>
-                        <div>Delete</div>
-                      </div>
-                    )}
-                  </div>
-                  <h3>My Meetings</h3>
-                  <div className="table-scroll">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Title</th>
-                          <th>From</th>
-                          <th>To</th>
-                          <th>Related To</th>
-                          <th>Contact Name</th>
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
-                </div>
-
-                {/* Deals Closing */}
-                <div className="table-box">
-                  <div className="box-actions">
-                    <button className="refresh-btn"><FiRefreshCcw /></button>
-                    <button className="menu-btn" onClick={() => toggleMenu('deals')}>⋮</button>
-                    {openMenu === 'deals' && (
-                      <div className="menu-dropdown">
-                        <div>Edit</div>
-                        <div>Delete</div>
-                      </div>
-                    )}
-                  </div>
-                  <h3>My Deals Closing This Month</h3>
-                  <div className="table-scroll">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Deal Name</th>
-                          <th>Amount</th>
-                          <th>Stage</th>
-                          <th>Closing Date</th>
-                          <th>Account Name</th>
-                          <th>Contact Name</th>
-                          <th>Deal Owner</th>
-
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Leads box */}
               <div className="leads-box">
                 <div className="box-actions">
                   <button className="refresh-btn"><FiRefreshCcw /></button>
@@ -372,118 +244,41 @@ const DashboardPage = () => {
                 </div>
               </div>
             </>
-          ) : activeTab === "Modules" && activeModule === "Leads" ? (
-            <>
-              <div className="leads-module">
-                <div className="leads-sidebar">
-                  <div className="filter-title">Filter Leads by</div>
-                  <input className="lead-search" placeholder=  " 🔍  Search" />
-                  <div className="filter-group">
-                <details open>
-                   <summary>▾ <strong>System Defined Filters</strong></summary>
-                  <ul className="filter-list">
-                <li><label><input type="checkbox" /> Touched Records</label></li>
-      <li><label><input type="checkbox" /> Untouched Records</label></li>
-      <li><label><input type="checkbox" /> Record Action</label></li>
-      <li><label><input type="checkbox" /> Related Records Action</label></li>
-      <li><label><input type="checkbox" /> Locked</label></li>
-      <li><label><input type="checkbox" /> Latest Email Status</label></li>
-      <li><label><input type="checkbox" /> Activities</label></li>
-      <li><label><input type="checkbox" /> Campaigns</label></li>
-      <li><label><input type="checkbox" /> Cadences</label></li>
-               </ul>
-               
-             </details>
-              </div>
-                    
-                  
-                   <div className="filter-group">
-                <details open>
-                   <summary>▾ <strong>Filter By Related Modules</strong></summary>
-                  <ul className="filter-list">
-      <li><label><input type="checkbox" /> Calls</label></li>
-      <li><label><input type="checkbox" /> Emails</label></li>
-      <li><label><input type="checkbox" /> Invitees (Invited Meetings)</label></li>
-      <li><label><input type="checkbox" /> Lead Product Relation (Products)</label></li>
-      <li><label><input type="checkbox" /> Meetings</label></li>
-      <li><label><input type="checkbox" /> Notes</label></li>
-      <li><label><input type="checkbox" /> Tasks</label></li>
-      
-               </ul>
-               
-             </details>
-              </div>
-                </div>
-
-                <div className="leads-table-section">
-                  <div className="lead-table-header">
-                    <span>Total Records <strong>0</strong></span>
-                    <div className="lead-actions">
-                      <select className="lead-dropdown"><option>All Locked Leads</option></select>
-                     <button className="btn" onClick={() => setShowLeadModal(true)}>Create Lead</button>
-                      {showLeadModal && <CreateLeadModal onClose={() => setShowLeadModal(false)} />}
-
-
-                      <button className="btn">Actions ⏷</button>
-                    </div>
-                  </div>
-            <div className="leads-table-scroll">
-  <table className='lead-table'>
-    <thead>
-      <tr>
-        <th>Lead Name</th>
-        <th>Company</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Lead Source</th>
-        <th>Lead Owner</th>
-        <th>Created By</th>
-        <th>Industry</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colSpan="8" style={{ textAlign: 'center', padding: '30px', color: '#94a3b8' }}>
-          No Leads found.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-             
-            </>
           )}
+
+          {/* Module Switching */}
+          {activeTab === "Modules" && activeModule === "Leads" && <LeadsModule />}
           {activeTab === "Modules" && activeModule === "Contacts" && <ContactsModule />}
           {activeTab === "Modules" && activeModule === "Accounts" && <AccountsModule />}
           {activeTab === "Modules" && activeModule === "Deals" && <DealsModule />}
-           {activeTab === "Modules" && activeModule === "Tasks" && <TasksModule />}
-            {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
+          {activeTab === "Modules" && activeModule === "Tasks" && <TasksModule />}
+          {activeTab === "Modules" && activeModule === "Meetings" && <MeetingsModule />}
           {activeTab === "Modules" && activeModule === "Calls" && <CallsModule />}
-            {activeTab === "Modules" && activeModule === "Products" && <ProductsModule />}
-           {activeTab === "Modules" && activeModule === "Quotes" && <QuotesModule />}
-           {activeTab === "Modules" && activeModule === "Sales Orders" && <SalesOrdersModule />}
-           {activeTab === "Modules" && activeModule === "Purchase Orders" && <PurchaseOrdersModule />}
-            {activeTab === "Modules" && activeModule === "Invoices" && <InvoicesModule />}
-            {activeTab === "Modules" && activeModule === "SalesInbox" && <SalesInbox />}
-            {activeTab === "Modules" && activeModule === "Campaigns" && <CampaignsModule />}
+          {activeTab === "Modules" && activeModule === "Products" && <ProductsModule />}
+          {activeTab === "Modules" && activeModule === "Quotes" && <QuotesModule />}
+          {activeTab === "Modules" && activeModule === "Sales Orders" && <SalesOrdersModule />}
+          {activeTab === "Modules" && activeModule === "Purchase Orders" && <PurchaseOrdersModule />}
+          {activeTab === "Modules" && activeModule === "Invoices" && <InvoicesModule />}
+          {activeTab === "Modules" && activeModule === "SalesInbox" && <SalesInbox />}
+          {activeTab === "Modules" && activeModule === "Campaigns" && <CampaignsModule />}
+          {activeTab === "Modules" && activeModule === "Vendors" && <VendorsModule />}
+          {activeTab === "Modules" && activeModule === "Cases" && <CasesModule />}
+          {activeTab === "Modules" && activeModule === "Price Books" && <PriceBooksModule />}
+          {activeTab === "Modules" && activeModule === "Solutions" && <SolutionsModule />}
+          {activeTab === "Modules" && activeModule === "Documents" && <DocumentsModule />}
+          {/* Reports Switching */}
+          {activeTab === "Reports" && activeReports === "All Reports" && <AllReportsPage />}
         </div>
-        
       </div>
-        
     </div>
-   
   );
-  
 };
 
-
 export default DashboardPage;
+
+
+
+
 
 
 

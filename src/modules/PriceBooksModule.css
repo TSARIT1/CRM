@@ -1,0 +1,128 @@
+.pricebooks-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f9fafb;
+}
+
+.pricebooks-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.pricebook-illustration {
+  width: 200px;
+  height: auto;
+}
+
+.pricebooks-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.pricebook-btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pricebook-btn-secondary {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pricebook-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.pricebook-modal {
+  background: #fff;
+  padding: 25px;
+  width: 850px;
+  max-height: 95vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.pricebook-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pricebook-close-btn {
+  background: none;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+}
+
+.pricebook-modal-body {
+  margin-top: 20px;
+}
+
+.pricebook-modal-body h4 {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.pricebook-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.pricebook-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+
+
+.import-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.import-box {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #94a3b8;
+}

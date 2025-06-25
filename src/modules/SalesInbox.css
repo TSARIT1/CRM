@@ -3,11 +3,12 @@
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   color: #1e293b;
+  height: 100%;
 }
 
 .salesinbox-header {
   text-align: left;
-  max-width: 900px;
+  max-width: 1000px;
   position: relative;
 }
 
@@ -59,8 +60,9 @@
 }
 
 .feature-box img {
-  width: 120px;
-  margin-bottom: 15px;
+  width: 300px;
+  margin-bottom: 25px;
+  height: 300px;
 }
 
 .feature-box h4 {

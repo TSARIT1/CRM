@@ -48,7 +48,7 @@ const CallsModule = () => {
 
         <div className="contact-filter-group">
           <details open>
-            <summary>▾ <strong>System Defined Filters</strong></summary>
+            <summary>▾<strong>System Defined Filters</strong></summary>
             <ul className="contact-filter-list">
               <li><label><input type="checkbox" /> Completed Calls</label></li>
               <li><label><input type="checkbox" /> Scheduled Calls</label></li>
