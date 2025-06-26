@@ -58,7 +58,26 @@ import DocumentsModule from './modules/DocumentsModule';
 
 //Reports
 import AllReportsPage from './Reports/AllReportsPage';
-
+import  MyReportsPage from "./Reports/MyReportsPage";
+import Favorites from './Reports/Favorites';
+import RecentlyViewed from './Reports/RecentlyViewed';
+import SharedReports from './Reports/SharedReports';
+import  ScheduledReports from './Reports/ScheduledReports';
+import RecentlyDeleted from './Reports/RecentlyDeleted';
+import AccountContactReports from './Reports/AccountContactReports';
+import DealReports from './Reports/DealReports';
+import LeadReports from './Reports/LeadReports';
+import CampaignReports from './Reports/CampaignReports';
+import CaseReports from './Reports/CaseReports';
+import ProductReports from './Reports/ProductReports';
+import VendorReports from './Reports/VendorReports';
+import QuoteReports from './Reports/QuoteReports';
+import SalesOrderReports from './Reports/SalesOrderReports';
+import PurchaseOrderReports from './Reports/PurchaseOrderReports';
+import InvoiceReports from './Reports/InvoiceReports';
+import SalesMetricsReports from './Reports/SalesMetricsReports';
+import EmailReports from './Reports/EmailReports';
+import MeetingReports from './Reports/MeetingReports';
 
 const modulesList = [
   { icon: <SiGoogleads />, label: "Leads" },
@@ -111,7 +130,7 @@ const requestReportsList = [
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeModule, setActiveModule] = useState("Leads");
-  const [activeReports, setActiveReports] = useState("Meeting Reports");
+  const [activeReports, setActiveReports] = useState("All Reports");
   const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menuName) => {
@@ -268,6 +287,26 @@ const DashboardPage = () => {
           {activeTab === "Modules" && activeModule === "Documents" && <DocumentsModule />}
           {/* Reports Switching */}
           {activeTab === "Reports" && activeReports === "All Reports" && <AllReportsPage />}
+          {activeTab === "Reports" && activeReports === "My Reports" && <  MyReportsPage />}
+          {activeTab === "Reports" && activeReports === "Favorites" && <  Favorites />}
+          {activeTab === "Reports" && activeReports === "Recently Viewed" && <  RecentlyViewed />}
+          {activeTab === "Reports" && activeReports === "Shared Reports" && <  SharedReports />}
+          {activeTab === "Reports" && activeReports === "Scheduled Reports" && <  ScheduledReports />}
+          { activeTab === "Reports" && activeReports === "Recently Deleted" && <  RecentlyDeleted />}
+          { activeTab === "Reports" && activeReports === "Account and Contact Reports" && <  AccountContactReports />}
+          { activeTab === "Reports" && activeReports === "Deal Reports" && <  DealReports />}
+          { activeTab === "Reports" && activeReports === "Lead Reports" && <  LeadReports />}
+          { activeTab === "Reports" && activeReports === "Campaign Reports" && <  CampaignReports />}
+          { activeTab === "Reports" && activeReports === "Case and Solution Reports" && <  CaseReports />}
+          { activeTab === "Reports" && activeReports === "Product Reports" && <  ProductReports />}
+          { activeTab === "Reports" && activeReports === "Vendor Reports" && <  VendorReports />}
+          { activeTab === "Reports" && activeReports === "Quote Reports" && <  QuoteReports />}
+          { activeTab === "Reports" && activeReports === "Sales Order Reports" && <  SalesOrderReports />}
+          { activeTab === "Reports" && activeReports === "Purchase Order Reports" && <  PurchaseOrderReports />}
+          { activeTab === "Reports" && activeReports === "Invoice Reports" && <  InvoiceReports />}
+          { activeTab === "Reports" && activeReports === "Sales Metrics Reports" && <  SalesMetricsReports />}
+          { activeTab === "Reports" && activeReports === "Email Reports" && <  EmailReports />}
+          { activeTab === "Reports" && activeReports === "Meeting Reports" && <   MeetingReports />}
         </div>
       </div>
     </div>

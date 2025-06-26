@@ -6,7 +6,7 @@ const AllReports = () => {
   return (
     <div className="all-reports-page">
       <div className="reports-header">
-        <h2>My Reports</h2>
+        <h2>All Reports</h2>
         <div className="search-container">
           <FaSearch className="search-icon" />
           <input type="text" placeholder="Search My Reports" />

@@ -1,0 +1,78 @@
+.salesorder-reports-page {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  height: 100%;
+}
+
+.salesorder-reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.salesorder-reports-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.globe-icon {
+  font-size: 14px;
+}
+
+.search-box {
+  position: relative;
+  width: 300px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 10px 8px 32px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9fafb;
+}
+
+.search-icon {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  color: #6b7280;
+}
+
+.salesorder-reports-table-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.salesorder-reports-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.salesorder-reports-table th {
+  text-align: left;
+  background: #f9fafb;
+  padding: 12px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.salesorder-reports-table td {
+  padding: 14px 12px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.no-salesorder-reports {
+  text-align: center;
+  padding: 40px 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
