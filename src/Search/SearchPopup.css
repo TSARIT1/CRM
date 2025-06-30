@@ -1,0 +1,65 @@
+/* Overlay only below navbar */
+.search-overlay {
+  position: fixed;
+  top: 60px; /* height of your navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: rgba(30, 30, 30, 0.5); /* dark transparent background */
+  backdrop-filter: blur(2px);
+  z-index: 999; /* lower than navbar */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 30px; /* space from top */
+}
+
+/* Container for the popup */
+.search-popup-container {
+  z-index: 1000;
+}
+
+/* Search bar styling */
+.search-popup-bar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid #6366f1;
+  width: 700px;
+  max-width: 95%;
+  position: relative;
+}
+
+/* Dropdown style */
+.search-dropdown {
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Input field */
+.search-text {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Close button */
+.search-close {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+

@@ -1,0 +1,54 @@
+.tsar-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 40px;
+  background: #f9fbfc;
+}
+
+.tsar-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tsar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.tsar-icon {
+  margin-bottom: 20px;
+}
+
+.tsar-card h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tsar-card p {
+  font-size: 14px;
+  color: #555;
+  min-height: 60px;
+  margin-bottom: 20px;
+}
+
+.tsar-card button {
+  padding: 8px 16px;
+  background: #635bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tsar-card button:hover {
+  background: #5246e3;
+}

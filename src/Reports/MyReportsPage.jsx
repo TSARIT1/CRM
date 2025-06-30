@@ -21,6 +21,7 @@ const MyReports = () => {
               <th>Description</th>
               <th>Folder</th>
               <th>Last Accessed Date</th>
+              
             </tr>
           </thead>
           <tbody>

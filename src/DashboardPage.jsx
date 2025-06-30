@@ -34,6 +34,7 @@ import { AiOutlineSolution } from "react-icons/ai";
 import { IoDocumentOutline } from "react-icons/io5";
 import { SiFarcaster } from "react-icons/si";
 
+
 // Module Components
 import LeadsModule from './modules/LeadsModule';
 import ContactsModule from './modules/ContactsModule';
@@ -79,27 +80,39 @@ import SalesMetricsReports from './Reports/SalesMetricsReports';
 import EmailReports from './Reports/EmailReports';
 import MeetingReports from './Reports/MeetingReports';
 
+//Marketplace
+
+import TSARPage from './Marketplace/TSARPage';
+import MicrosoftAddinsPage from './Marketplace/MicrosoftAddinsPage';
+
+
+//Search
+
+import SearchPopup from './Search/SearchPopup';
+
+
+
 const modulesList = [
-  { icon: <SiGoogleads />, label: "Leads" },
-  { icon: <RiContactsBookFill />, label: "Contacts" },
-  { icon: <MdManageAccounts />, label: "Accounts" },
-  { icon: <FaIdeal />, label: "Deals" },
-  { icon: <GrTask />, label: "Tasks" },
-  { icon: <MdOutlineMeetingRoom />, label: "Meetings" },
-  { icon: <IoCall />, label: "Calls" },
-  { icon: <MdOutlineProductionQuantityLimits />, label: "Products" },
-  { icon: <BsChatSquareQuote />, label: "Quotes" },
-  { icon: <FaBorderStyle />, label: "Sales Orders" },
-  { icon: <BiPurchaseTagAlt />, label: "Purchase Orders" },
-  { icon: <LiaFileInvoiceSolid />, label: "Invoices" },
-  { icon: <BsBoxSeamFill />, label: "SalesInbox" },
-  { icon: <MdOutlineCampaign />, label: "Campaigns" },
-  { icon: <PiOvenDuotone />, label: "Vendors" },
-  { icon: <RiPriceTag2Line />, label: "Price Books" },
-  { icon: <IoBriefcaseSharp />, label: "Cases" },
-  { icon: <AiOutlineSolution />, label: "Solutions" },
-  { icon: <IoDocumentOutline />, label: "Documents" },
-  { icon: <SiFarcaster />, label: "Forecasts" },
+   { icon: <SiGoogleads style={{ color: "#F59E0B" }} />, label: "Leads" },
+  { icon: <RiContactsBookFill style={{ color: "#3B82F6" }} />, label: "Contacts" },
+  { icon: <MdManageAccounts style={{ color: "#10B981" }} />, label: "Accounts" },
+  { icon: <FaIdeal style={{ color: "#6366F1" }} />, label: "Deals" },
+  { icon: <GrTask style={{ color: "#A855F7" }} />, label: "Tasks" },
+  { icon: <MdOutlineMeetingRoom style={{ color: "#EC4899" }} />, label: "Meetings" },
+  { icon: <IoCall style={{ color: "#2563EB" }} />, label: "Calls" },
+  { icon: <MdOutlineProductionQuantityLimits style={{ color: "#E11D48" }} />, label: "Products" },
+  { icon: <BsChatSquareQuote style={{ color: "#F43F5E" }} />, label: "Quotes" },
+  { icon: <FaBorderStyle style={{ color: "#0EA5E9" }} />, label: "Sales Orders" },
+  { icon: <BiPurchaseTagAlt style={{ color: "#22C55E" }} />, label: "Purchase Orders" },
+  { icon: <LiaFileInvoiceSolid style={{ color: "#9333EA" }} />, label: "Invoices" },
+  { icon: <BsBoxSeamFill style={{ color: "#8B5CF6" }} />, label: "SalesInbox" },
+  { icon: <MdOutlineCampaign style={{ color: "#F59E0B" }} />, label: "Campaigns" },
+  { icon: <PiOvenDuotone style={{ color: "#10B981" }} />, label: "Vendors" },
+  { icon: <RiPriceTag2Line style={{ color: "#D97706" }} />, label: "Price Books" },
+  { icon: <IoBriefcaseSharp style={{ color: "#0EA5E9" }} />, label: "Cases" },
+  { icon: <AiOutlineSolution style={{ color: "#F43F5E" }} />, label: "Solutions" },
+  { icon: <IoDocumentOutline style={{ color: "#3B82F6" }} />, label: "Documents" },
+  { icon: <SiFarcaster style={{ color: "#A21CAF" }} />, label: "Forecasts" },
 ];
 
 const requestReportsList = [
@@ -125,12 +138,19 @@ const requestReportsList = [
   { label: "Email Reports" },
    { label: "Meeting Reports" },
 ];
+const marketplaceItems = [
+  { label: "TSAR" },
+  { label: "Microsoft" },
+];
 
 
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeModule, setActiveModule] = useState("Leads");
   const [activeReports, setActiveReports] = useState("All Reports");
+  const [activeMarketplace, setActiveMarketplace] = useState("TSAR");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menuName) => {
@@ -142,21 +162,27 @@ const DashboardPage = () => {
       <nav className="top-navbar">
         {["Modules", "Reports", "Analytics", "Requests", "Marketplace", "Search", "AddNew", "Home", "Setup", "Profile"].map(tab => (
           <div
-            key={tab}
-            className={activeTab === tab ? "active" : ""}
-            onClick={() => setActiveTab(tab)}
-          >
-            <span className="nav-icon">
-              {tab === "Reports" ? <TbReportSearch /> :
-                tab === "Analytics" ? <IoMdAnalytics /> :
-                tab === "Requests" ? <IoGitPullRequestSharp /> :
-                tab === "Marketplace" ? <SiCoinmarketcap /> :
-                tab === "Search" ? <FaSearch /> :
-                tab === "AddNew" ? <MdOutlineAddCircle /> :
-                tab === "Home" ? <IoHomeOutline /> :
-                tab === "Setup" ? <MdOutlineWifiProtectedSetup /> :
-                tab === "Modules" ? <VscFileSubmodule /> :
-                tab === "Profile" ? <CgProfile /> : ""}
+                 key={tab}
+                 className={activeTab === tab ? "active" : ""}
+                 onClick={() => {
+                      if (tab === "Search") {
+                      setIsSearchOpen(true);
+                      } else {
+                      setActiveTab(tab);
+            }
+            }}
+         ><span className="nav-icon">
+               {tab === "Reports" ? <TbReportSearch style={{ color: "#4F46E5" }} /> :
+                tab === "Analytics" ? <IoMdAnalytics style={{ color: "#16A34A" }} /> :
+                tab === "Requests" ? <IoGitPullRequestSharp style={{ color: "#D97706" }} /> :
+                 tab === "Marketplace" ? <SiCoinmarketcap style={{ color: "#DB2777" }} /> :
+                tab === "Search" ? <FaSearch style={{ color: "#2563EB" }} /> :
+                tab === "AddNew" ? <MdOutlineAddCircle style={{ color: "#10B981" }} /> :
+               tab === "Home" ? <IoHomeOutline style={{ color: "#9333EA" }} /> :
+              tab === "Setup" ? <MdOutlineWifiProtectedSetup style={{ color: "#F59E0B" }} /> :
+                 tab === "Modules" ? <VscFileSubmodule style={{ color: "#3B82F6" }} /> :
+                 tab === "Profile" ? <CgProfile style={{ color: "#0EA5E9" }} /> :
+                                                                                ""}
             </span>
             <span className="nav-label">{tab}</span>
             
@@ -180,18 +206,33 @@ const DashboardPage = () => {
         )}
 
         {activeTab === "Reports" && (
-          <aside className="sidebar">
-            {requestReportsList.map((item, idx) => (
-              <div
-                key={idx}
-                className={`sidebar-item ${activeReports === item.label ? 'active' : ''}`}
-                onClick={() => setActiveReports(item.label)}
-              >
-                {item.label}
-              </div>
-            ))}
-          </aside>
-        )}
+  <aside className="sidebar">
+    {requestReportsList.map((item, idx) => (
+      <div
+        key={idx}
+        className={`sidebar-item ${activeReports === item.label ? 'active' : ''}`}
+        onClick={() => setActiveReports(item.label)}
+      >
+        {item.label}
+      </div>
+    ))}
+  </aside>
+)}
+{activeTab === "Marketplace" && (
+  <aside className="sidebar">
+    <h4 className="sidebar-heading">Integrations</h4>
+    {marketplaceItems.map((item, idx) => (
+      <div key={idx} 
+         className={`sidebar-item ${activeMarketplace === item.label ? 'active' : ''}`}
+         onClick={() => setActiveMarketplace(item.label)}
+         >
+        {item.label}
+      </div>
+    ))}
+  </aside>
+)}
+
+
 
         <div className="main-content">
           {activeTab === "Home" && (
@@ -218,6 +259,7 @@ const DashboardPage = () => {
                         <div className="menu-dropdown">
                           <div>Edit</div>
                           <div>Delete</div>
+                          
                         </div>
                       )}
                     </div>
@@ -307,6 +349,16 @@ const DashboardPage = () => {
           { activeTab === "Reports" && activeReports === "Sales Metrics Reports" && <  SalesMetricsReports />}
           { activeTab === "Reports" && activeReports === "Email Reports" && <  EmailReports />}
           { activeTab === "Reports" && activeReports === "Meeting Reports" && <   MeetingReports />}
+            {/* Marketplace Switching */}
+            {activeTab === "Marketplace" && activeMarketplace === "TSAR" && <TSARPage />}
+            {activeTab === "Marketplace" && activeMarketplace === "Microsoft" && <MicrosoftAddinsPage />}
+
+
+           {isSearchOpen && <SearchPopup onClose={() => setIsSearchOpen(false)} />}
+
+
+
+
         </div>
       </div>
     </div>
@@ -314,6 +366,7 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
 
 
 

@@ -21,15 +21,17 @@ const MeetingReports = () => {
             <tr>
               <th>
                 <input type="checkbox" /> &nbsp; Report Name
-              </th>
-              <th>Description</th>
+                </th>
+                <th>Description</th>
               <th>Last Accessed Date</th>
+              
             </tr>
           </thead>
           <tbody>
             <tr>
               <td colSpan="3" className="no-meeting-reports">
                 No Reports Found
+                
               </td>
             </tr>
           </tbody>

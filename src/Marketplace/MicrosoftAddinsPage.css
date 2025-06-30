@@ -1,0 +1,93 @@
+.microsoft-container {
+  padding: 30px 40px;
+  background: #f9fbfc;
+}
+
+.microsoft-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.microsoft-tabs span {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  border-bottom: 2px solid transparent;
+}
+
+.microsoft-tabs span.active {
+  color: #222;
+  border-bottom: 2px solid #4a3aff;
+}
+
+.microsoft-content h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #222;
+}
+
+.outlook-card {
+  display: flex;
+  gap: 30px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.icon-section {
+  flex-shrink: 0;
+}
+
+.info-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.info-section p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.info-section small {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin: 10px 0;
+}
+
+.info-section button {
+  padding: 10px 20px;
+  background: #3a66ff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.info-section button:hover {
+  background: #2a4dd9;
+}
+
+.features h4 {
+  margin-bottom: 10px;
+}
+
+.features ul {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+.features ul li {
+  margin-bottom: 8px;
+}
