@@ -93,7 +93,7 @@ import SearchPopup from './Search/SearchPopup';
 
 
 const modulesList = [
-   { icon: <SiGoogleads style={{ color: "#F59E0B" }} />, label: "Leads" },
+  { icon: <SiGoogleads style={{ color: "#F59E0B" }} />, label: "Leads" },
   { icon: <RiContactsBookFill style={{ color: "#3B82F6" }} />, label: "Contacts" },
   { icon: <MdManageAccounts style={{ color: "#10B981" }} />, label: "Accounts" },
   { icon: <FaIdeal style={{ color: "#6366F1" }} />, label: "Deals" },
@@ -150,6 +150,8 @@ const DashboardPage = () => {
   const [activeReports, setActiveReports] = useState("All Reports");
   const [activeMarketplace, setActiveMarketplace] = useState("TSAR");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isAddNewOpen, setIsAddNewOpen] = useState(false);
+
 
   const [openMenu, setOpenMenu] = useState(null);
 
@@ -164,25 +166,29 @@ const DashboardPage = () => {
           <div
                  key={tab}
                  className={activeTab === tab ? "active" : ""}
-                 onClick={() => {
-                      if (tab === "Search") {
-                      setIsSearchOpen(true);
-                      } else {
-                      setActiveTab(tab);
-            }
-            }}
+               onClick={() => {
+  if (tab === "Search") {
+    setIsSearchOpen(true);
+  } else if (tab === "AddNew") {
+    setIsAddNewOpen(prev => !prev);  // Toggle dropdown
+  } else {
+    setActiveTab(tab);
+    setIsAddNewOpen(false); // Close dropdown if navigating elsewhere
+  }
+}}
+
          ><span className="nav-icon">
-               {tab === "Reports" ? <TbReportSearch style={{ color: "#4F46E5" }} /> :
-                tab === "Analytics" ? <IoMdAnalytics style={{ color: "#16A34A" }} /> :
-                tab === "Requests" ? <IoGitPullRequestSharp style={{ color: "#D97706" }} /> :
+               { tab === "Reports" ? <TbReportSearch style={{ color: "#4F46E5" }} /> :
+                 tab === "Analytics" ? <IoMdAnalytics style={{ color: "#16A34A" }} /> :
+                 tab === "Requests" ? <IoGitPullRequestSharp style={{ color: "#D97706" }} /> :
                  tab === "Marketplace" ? <SiCoinmarketcap style={{ color: "#DB2777" }} /> :
-                tab === "Search" ? <FaSearch style={{ color: "#2563EB" }} /> :
-                tab === "AddNew" ? <MdOutlineAddCircle style={{ color: "#10B981" }} /> :
-               tab === "Home" ? <IoHomeOutline style={{ color: "#9333EA" }} /> :
-              tab === "Setup" ? <MdOutlineWifiProtectedSetup style={{ color: "#F59E0B" }} /> :
+                 tab === "Search" ? <FaSearch style={{ color: "#2563EB" }} /> :
+                 tab === "AddNew" ? <MdOutlineAddCircle style={{ color: "#10B981" }} /> :
+                 tab === "Home" ? <IoHomeOutline style={{ color: "#9333EA" }} /> :
+                 tab === "Setup" ? <MdOutlineWifiProtectedSetup style={{ color: "#F59E0B" }} /> :
                  tab === "Modules" ? <VscFileSubmodule style={{ color: "#3B82F6" }} /> :
                  tab === "Profile" ? <CgProfile style={{ color: "#0EA5E9" }} /> :
-                                                                                ""}
+                                                                                              ""}
             </span>
             <span className="nav-label">{tab}</span>
             
@@ -211,8 +217,7 @@ const DashboardPage = () => {
       <div
         key={idx}
         className={`sidebar-item ${activeReports === item.label ? 'active' : ''}`}
-        onClick={() => setActiveReports(item.label)}
-      >
+        onClick={() => setActiveReports(item.label)}>
         {item.label}
       </div>
     ))}
@@ -231,6 +236,25 @@ const DashboardPage = () => {
     ))}
   </aside>
 )}
+
+{isAddNewOpen && (
+  <div className="addnew-dropdown">
+    {["Lead", "Contact", "Account", "Deal", "Task", "Meeting", "Call", "Campaign"].map(item => (
+      <div
+        key={item}
+        className="addnew-item"
+        onClick={() => {
+          setActiveTab("Modules");
+          setActiveModule(item + (item === "Lead" ? "s" : "s")); // e.g., "Leads", "Contacts"
+          setIsAddNewOpen(false);
+        }}
+      >
+        + {item}
+      </div>
+    ))}
+  </div>
+)}
+
 
 
 

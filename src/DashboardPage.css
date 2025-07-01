@@ -407,6 +407,63 @@ body::-webkit-scrollbar-thumb,
 
 
 
+@keyframes dropdownFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.addnew-dropdown {
+  position: absolute;
+  top: 43px; /* adjust based on navbar height */
+  left: 62%; /* position near AddNew tab */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  width: 150px;
+  padding: 6px 0;
+  animation: dropdownFadeSlide 0.25s ease-out;
+}
+
+.addnew-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1f2937; /* dark gray */
+  transition: background-color 0.25s ease, transform 0.1s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+}
+
+.addnew-item:hover {
+  background-color: #f3f4f6;
+  color: #2563eb; /* hover blue */
+}
+
+.addnew-item:active {
+  transform: scale(0.98);
+  background-color: #e5e7eb;
+}
+
+.addnew-item:last-child {
+  border-bottom: none;
+}
+
+
+
+
+
+
 
 
 

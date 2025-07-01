@@ -35,7 +35,7 @@
 
 /* Dropdown style */
 .search-dropdown {
-  border: none;
+  border: none ;
   padding: 10px;
   border-radius: 6px;
   background: transparent;
@@ -46,7 +46,7 @@
 /* Input field */
 .search-text {
   flex: 1;
-  border: none;
+  border: 1px solid #212125;
   padding: 10px;
   outline: none;
   font-size: 14px;
