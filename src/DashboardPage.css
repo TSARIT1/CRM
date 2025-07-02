@@ -436,7 +436,7 @@ body::-webkit-scrollbar-thumb,
   padding: 10px 16px;
   cursor: pointer;
   font-size: 14px;
-  color: #1f2937; /* dark gray */
+  color: #283546; /* dark gray */
   transition: background-color 0.25s ease, transform 0.1s ease;
   border: none;
   background: transparent;

@@ -1,0 +1,80 @@
+/* PersonalSettings.css */
+
+.settings-container {
+  max-width: 1000px;
+  height: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 8px;
+}
+
+.settings-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.settings-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 0.75rem;
+  background-color: #fed7aa;
+  color: #c2410c;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+.role {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.contact-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.section {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}

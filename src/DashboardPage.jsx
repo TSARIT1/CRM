@@ -90,6 +90,11 @@ import MicrosoftAddinsPage from './Marketplace/MicrosoftAddinsPage';
 
 import SearchPopup from './Search/SearchPopup';
 
+//Setup
+import SetupSidebar from './Setup/SetupSidebar';
+import PersonalSettings from './Setup/PersonalSettings';
+
+
 
 
 const modulesList = [
@@ -144,6 +149,10 @@ const marketplaceItems = [
 ];
 
 
+
+
+
+
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeModule, setActiveModule] = useState("Leads");
@@ -151,9 +160,7 @@ const DashboardPage = () => {
   const [activeMarketplace, setActiveMarketplace] = useState("TSAR");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAddNewOpen, setIsAddNewOpen] = useState(false);
-
-
-  const [openMenu, setOpenMenu] = useState(null);
+ const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menuName) => {
     setOpenMenu(prev => (prev === menuName ? null : menuName));
@@ -170,7 +177,7 @@ const DashboardPage = () => {
   if (tab === "Search") {
     setIsSearchOpen(true);
   } else if (tab === "AddNew") {
-    setIsAddNewOpen(prev => !prev);  // Toggle dropdown
+    setIsAddNewOpen(prev => !prev); 
   } else {
     setActiveTab(tab);
     setIsAddNewOpen(false); // Close dropdown if navigating elsewhere
@@ -245,7 +252,7 @@ const DashboardPage = () => {
         className="addnew-item"
         onClick={() => {
           setActiveTab("Modules");
-          setActiveModule(item + (item === "Lead" ? "s" : "s")); // e.g., "Leads", "Contacts"
+          setActiveModule(item + (item === "Lead" ? "s" : "s")); 
           setIsAddNewOpen(false);
         }}
       >
@@ -254,11 +261,16 @@ const DashboardPage = () => {
     ))}
   </div>
 )}
+{activeTab === "Setup" && (
+  <aside>
+    <SetupSidebar />
+  </aside>
+)}
 
 
 
-
-        <div className="main-content">
+<div className="main-content">
+   
           {activeTab === "Home" && (
             <>
               <div className="welcome-box">
@@ -376,14 +388,15 @@ const DashboardPage = () => {
             {/* Marketplace Switching */}
             {activeTab === "Marketplace" && activeMarketplace === "TSAR" && <TSARPage />}
             {activeTab === "Marketplace" && activeMarketplace === "Microsoft" && <MicrosoftAddinsPage />}
+            { isSearchOpen && <SearchPopup onClose={() => setIsSearchOpen(false)} />}
 
-
-           {isSearchOpen && <SearchPopup onClose={() => setIsSearchOpen(false)} />}
+              <PersonalSettings />
 
 
 
 
         </div>
+        
       </div>
     </div>
   );
