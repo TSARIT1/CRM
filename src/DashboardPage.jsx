@@ -79,6 +79,8 @@ import InvoiceReports from './Reports/InvoiceReports';
 import SalesMetricsReports from './Reports/SalesMetricsReports';
 import EmailReports from './Reports/EmailReports';
 import MeetingReports from './Reports/MeetingReports';
+import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
+
 
 //Marketplace
 
@@ -91,8 +93,9 @@ import MicrosoftAddinsPage from './Marketplace/MicrosoftAddinsPage';
 import SearchPopup from './Search/SearchPopup';
 
 //Setup
-import SetupSidebar from './Setup/SetupSidebar';
 import PersonalSettings from './Setup/PersonalSettings';
+
+
 
 
 
@@ -150,6 +153,38 @@ const marketplaceItems = [
 
 
 
+const setupSections = [
+  {
+    heading: "General",
+    items: ["Personal Settings", "Users", "Company Settings"],
+  },
+  {
+    heading: "Security Control",
+    items: ["Profiles", "Roles and Sharing", "Compliance Settings", "Support Access"],
+  },
+  {
+    heading: "Channels",
+    items: ["Email", "Notification SMS", "Webforms", "Chat"],
+  },
+  {
+    heading: "Customization",
+    items: ["Modules and Fields", "Customize Home page", "Templates"],
+  },
+  {
+    heading: "Automation",
+    items: ["Workflow Rules", "Actions"],
+  },
+  {
+    heading: "Data Administration",
+    items: ["Import", "Export", "Data Backup", "Remove sample data", "Storage", "Recycle Bin"],
+  },
+  {
+    heading: "Developer Hub",
+    items: ["APIs and SDKs", "Catalyst Solutions"],
+  },
+];
+
+
 
 
 
@@ -161,6 +196,10 @@ const DashboardPage = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAddNewOpen, setIsAddNewOpen] = useState(false);
  const [openMenu, setOpenMenu] = useState(null);
+ const [expandedSections, setExpandedSections] = useState({ General: true });
+const [selectedItem, setSelectedItem] = useState("Personal Settings");
+
+ 
 
   const toggleMenu = (menuName) => {
     setOpenMenu(prev => (prev === menuName ? null : menuName));
@@ -262,10 +301,38 @@ const DashboardPage = () => {
   </div>
 )}
 {activeTab === "Setup" && (
-  <aside>
-    <SetupSidebar />
+  <aside className="setup-sidebar">
+    <h3 className="setup-title">Setup</h3>
+    <input type="text" placeholder="Search" className="setup-search" />
+    {setupSections.map((section, idx) => (
+      <div key={idx} className="setup-section">
+        <div className="setup-heading" onClick={() =>
+          setExpandedSections((prev) => ({
+            ...prev,
+            [section.heading]: !prev[section.heading],
+          }))
+        }>
+          {expandedSections[section.heading] ? <IoIosArrowDown /> : <IoIosArrowForward />}
+          <span>{section.heading}</span>
+        </div>
+        {expandedSections[section.heading] && (
+          <div className="setup-items">
+            {section.items.map((item) => (
+              <div
+                key={item}
+                className={`setup-item ${selectedItem === item ? 'active' : ''}`}
+                onClick={() => setSelectedItem(item)}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
   </aside>
 )}
+
 
 
 
@@ -390,7 +457,8 @@ const DashboardPage = () => {
             {activeTab === "Marketplace" && activeMarketplace === "Microsoft" && <MicrosoftAddinsPage />}
             { isSearchOpen && <SearchPopup onClose={() => setIsSearchOpen(false)} />}
 
-              <PersonalSettings />
+            {/* SetUp*/}
+            {activeTab === "Setup" && selectedItem === "Personal Settings" && <PersonalSettings />}
 
 
 
