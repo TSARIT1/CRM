@@ -94,7 +94,13 @@ import SearchPopup from './Search/SearchPopup';
 
 //Setup
 import PersonalSettings from './Setup/PersonalSettings';
-
+import UserManagementPage from './Setup/UserManagementPage';
+import CompanySettingsPage from './Setup/CompanySettingsPage';
+import ProfilesPage from './Setup/ProfilesPage';
+import RolesHierarchyPage from './Setup/RolesHierarchyPage';
+import ComplianceSettings from './Setup/ComplianceSettings';
+import SupportAccessPage from './Setup/SupportAccessPage';
+import EmailComposeSettings from './Setup/EmailComposeSettings';
 
 
 
@@ -332,10 +338,6 @@ const [selectedItem, setSelectedItem] = useState("Personal Settings");
     ))}
   </aside>
 )}
-
-
-
-
 <div className="main-content">
    
           {activeTab === "Home" && (
@@ -459,6 +461,15 @@ const [selectedItem, setSelectedItem] = useState("Personal Settings");
 
             {/* SetUp*/}
             {activeTab === "Setup" && selectedItem === "Personal Settings" && <PersonalSettings />}
+            {activeTab === "Setup" && selectedItem === "Users" && <UserManagementPage/>}
+            {activeTab === "Setup" && selectedItem === "Company Settings" && <CompanySettingsPage/>}
+            {activeTab === "Setup" && selectedItem === "Profiles" && <ProfilesPage/>}
+            {activeTab === "Setup" && selectedItem === "Roles and Sharing" && <RolesHierarchyPage/>}
+            {activeTab === "Setup" && selectedItem === "Compliance Settings" && <ComplianceSettings/>}
+            {activeTab === "Setup" && selectedItem === "Support Access" && <SupportAccessPage/>}
+            {activeTab === "Setup" && selectedItem === "Email" && <EmailComposeSettings/>}
+
+
 
 
 

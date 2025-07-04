@@ -1,4 +1,3 @@
-// PersonalSettings.jsx
 import React, { useState } from 'react';
 import { Mail, Phone, Pencil, ChevronDown, Eye, Hand, Sparkles } from 'lucide-react';
 import './PersonalSettings.css';

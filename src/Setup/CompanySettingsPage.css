@@ -1,0 +1,114 @@
+.company-settings-container {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+/* Tabs */
+.company-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.tab-item {
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #444;
+}
+
+.tab-item.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Company Info */
+.company-info-content {
+  padding: 16px 0;
+}
+
+.company-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.company-icon-box {
+  width: 70px;
+  height: 70px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-icon {
+  font-size: 30px;
+}
+
+.company-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.org-id {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Access URL block */
+.access-url-block h4,
+.locale-block h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.url-line,
+.time-zone-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #444;
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 500;
+  color: #333;
+}
+
+.value {
+  flex: 1;
+  color: #555;
+}
+
+.copy-icon,
+.edit-icon {
+  cursor: pointer;
+  color: #666;
+}

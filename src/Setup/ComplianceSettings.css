@@ -1,0 +1,112 @@
+.compliance-container {
+  padding: 32px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.compliance-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+h4 {
+  font-size: 16px;
+  color: #111827;
+  margin-bottom: 24px;
+}
+
+/* GDPR Boxes */
+.gdpr-options {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.gdpr-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.gdpr-icon {
+  margin-bottom: 12px;
+}
+
+.gdpr-icon.blue {
+  color: #3b82f6;
+}
+
+.gdpr-icon.green {
+  color: #10b981;
+}
+
+.gdpr-icon.purple {
+  color: #8b5cf6;
+}
+
+.gdpr-box h5 {
+  font-size: 16px;
+  color: #111827;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.gdpr-box p {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.gdpr-box a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Footer Section */
+.compliance-footer {
+  margin-top: 20px;
+}
+
+.enable-btn {
+  padding: 12px 24px;
+  background-color: #059669;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.enable-btn:hover {
+  background-color: #047857;
+}
+
+.watch-link {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.watch-link a {
+  color: #4f46e5;
+  font-weight: 500;
+  text-decoration: none;
+}
