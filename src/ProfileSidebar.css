@@ -1,0 +1,186 @@
+/* Root Theme Variables */
+:root {
+  --sidebar-bg: #ffffff;
+  --text-color: #111111;
+  --profile-bg-dark: rgba(31, 31, 31, 0.95); /* strong dark */
+  --profile-bg-light: rgba(255, 255, 255, 0.85); /* light blur */
+  --profile-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Overrides */
+body.theme-day {
+  --sidebar-bg: var(--profile-bg-light);
+  --text-color: #111;
+}
+
+body.theme-night {
+  --sidebar-bg: var(--profile-bg-dark);
+  --text-color: #f3f3f3;
+}
+
+/* Sidebar Base */
+.profile-sidebar {
+  width: 320px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: var(--sidebar-bg);
+  box-shadow: var(--profile-shadow);
+  color: var(--text-color);
+  padding: 1.5rem;
+  z-index: 1000;
+  overflow-y: auto;
+  backdrop-filter: blur(12px); /* enable blur effect */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Close Button */
+.profile-sidebar .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* User Info Section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.avatar-icon {
+  font-size: 50px;
+  margin-right: 1rem;
+  color: #4f46e5;
+}
+
+.user-info h4 {
+  margin: 0;
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: #2563eb;
+  margin-top: 4px;
+}
+
+/* Plan Section */
+.plan-section {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upgrade-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+/* Theme Switch */
+.theme-switch .modes button {
+  background: transparent;
+  border: none;
+  margin-right: 1rem;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.theme-switch .modes button.active {
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+/* Color Palette */
+.theme-switch .colors {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.theme-switch .colors span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Help Section */
+.help-section {
+  margin-top: 2rem;
+}
+
+.help-section h4 {
+  margin-bottom: 0.5rem;
+}
+
+.help-links p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+/* News Buttons */
+.news-room {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.news-room button {
+  flex: 1;
+  background: #f3f4f6;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Footer Actions */
+.footer-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-actions .my-account {
+  background: none;
+  border: 1px solid #4f46e5;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  color: #4f46e5;
+  cursor: pointer;
+}
+
+.footer-actions .signout {
+  background: none;
+  border: none;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}

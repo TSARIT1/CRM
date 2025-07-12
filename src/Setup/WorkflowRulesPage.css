@@ -1,0 +1,130 @@
+.workflow-page {
+  background: #f9fafb;
+  padding: 1.5rem;
+  min-height: 100vh;
+}
+
+.workflow-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.workflow-subheading {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+
+.workflow-notice {
+  display: flex;
+  align-items: center;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  padding: 1rem;
+  border-radius: 8px;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.notice-icon {
+  font-size: 1.25rem;
+}
+
+.notice-text {
+  flex: 1;
+  color: #78350f;
+  font-size: 0.9rem;
+}
+
+.notice-btn {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.workflow-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.reorder-btn {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  color: #9ca3af;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+.create-rule-btn {
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.workflow-table {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.workflow-table-header,
+.workflow-table-row {
+  display: grid;
+  grid-template-columns: 0.75fr 2fr 1.5fr 1.5fr 1fr 1.5fr 1fr;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.workflow-table-header {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.workflow-table-row:hover {
+  background-color: #f3f4f6;
+}
+
+.rule-name {
+  color: #3b82f6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.toggle-btn {
+  cursor: pointer;
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-on {
+  color: #22c55e;
+}
+
+.toggle-off {
+  color: #d1d5db;
+}
+

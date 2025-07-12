@@ -1,0 +1,67 @@
+.export-container {
+  padding: 2rem;
+  background-color: #f4f6fb;
+  border-radius: 10px;
+  min-height: 300px;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.export-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.export-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #111;
+}
+
+.export-help {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4a5a74;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.help-icon {
+  font-size: 16px;
+}
+
+.export-info {
+  margin-top: 1rem;
+  font-size: 15px;
+  color: #333;
+}
+
+.backup-link {
+  color: #3b49df;
+  text-decoration: none;
+}
+
+.backup-link:hover {
+  text-decoration: underline;
+}
+
+.export-btn {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #4f6ef7, #5874f9);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.export-btn:hover {
+  background: linear-gradient(to right, #3f5be3, #4f6ef7);
+}
+

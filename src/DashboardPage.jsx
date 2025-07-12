@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './DashboardPage.css';
 
 import { SiGoogleads } from "react-icons/si";
@@ -81,6 +81,9 @@ import EmailReports from './Reports/EmailReports';
 import MeetingReports from './Reports/MeetingReports';
 import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
 
+import ProfileSidebar from './ProfileSidebar';
+
+
 
 //Marketplace
 
@@ -101,6 +104,19 @@ import RolesHierarchyPage from './Setup/RolesHierarchyPage';
 import ComplianceSettings from './Setup/ComplianceSettings';
 import SupportAccessPage from './Setup/SupportAccessPage';
 import EmailComposeSettings from './Setup/EmailComposeSettings';
+import WebForms from './Setup/WebForms';
+import NotificationSMSPage from './Setup/NotificationSMSPage';
+import Chatpage from './Setup/Chatpage';
+import ModuleManagementPage from './Setup/ModuleManagement';
+import CustomizeHomePage from './Setup/CustomizeHomePage';
+import TemplatesPage from './Setup/TemplatesPage';
+import WorkflowRulesPage from './Setup/WorkflowRulesPage';
+import ActionPage from './Setup/ActionPage'; 
+import ImportPage from './Setup/ImportPage';
+import ExportPage from './Setup/ExportPage';
+import DataBackupPage from './Setup/DataBackupPage';
+import RemoveSampleData from './Setup/RemoveSampleData';
+import RecycleBin from './Setup/RecycleBin';
 
 
 
@@ -182,12 +198,9 @@ const setupSections = [
   },
   {
     heading: "Data Administration",
-    items: ["Import", "Export", "Data Backup", "Remove sample data", "Storage", "Recycle Bin"],
+    items: ["Import", "Export", "Data Backup", "Remove sample data",  "Recycle Bin"],
   },
-  {
-    heading: "Developer Hub",
-    items: ["APIs and SDKs", "Catalyst Solutions"],
-  },
+  
 ];
 
 
@@ -204,10 +217,27 @@ const DashboardPage = () => {
  const [openMenu, setOpenMenu] = useState(null);
  const [expandedSections, setExpandedSections] = useState({ General: true });
 const [selectedItem, setSelectedItem] = useState("Personal Settings");
+const [isProfileOpen, setIsProfileOpen] = useState(false);
+const [theme, setTheme] = useState('auto'); // auto, light, dark
 
- 
 
-  const toggleMenu = (menuName) => {
+useEffect(() => {
+  const root = document.documentElement;
+
+  if (theme === 'light') {
+    root.setAttribute('data-theme', 'light');
+  } else if (theme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else {
+    // Auto: use system preference
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', systemDark ? 'dark' : 'light');
+  }
+}, [theme]);
+
+
+
+ const toggleMenu = (menuName) => {
     setOpenMenu(prev => (prev === menuName ? null : menuName));
   };
 
@@ -218,18 +248,22 @@ const [selectedItem, setSelectedItem] = useState("Personal Settings");
           <div
                  key={tab}
                  className={activeTab === tab ? "active" : ""}
-               onClick={() => {
+              onClick={() => {
   if (tab === "Search") {
     setIsSearchOpen(true);
   } else if (tab === "AddNew") {
-    setIsAddNewOpen(prev => !prev); 
+    setIsAddNewOpen(prev => !prev);
+  } else if (tab === "Profile") {
+    setIsProfileOpen(true);       // open Profile Sidebar
+    setIsAddNewOpen(false);       // close AddNew dropdown
+    setIsSearchOpen(false);       // close Search popup if open
   } else {
-    setActiveTab(tab);
-    setIsAddNewOpen(false); // Close dropdown if navigating elsewhere
+    setActiveTab(tab);            // switch tab
+    setIsAddNewOpen(false);       // close AddNew dropdown
+    setIsProfileOpen(false);      // close Profile if navigating away
+    setIsSearchOpen(false);       // close Search popup if navigating away
   }
-}}
-
-         ><span className="nav-icon">
+}} ><span className="nav-icon">
                { tab === "Reports" ? <TbReportSearch style={{ color: "#4F46E5" }} /> :
                  tab === "Analytics" ? <IoMdAnalytics style={{ color: "#16A34A" }} /> :
                  tab === "Requests" ? <IoGitPullRequestSharp style={{ color: "#D97706" }} /> :
@@ -337,80 +371,129 @@ const [selectedItem, setSelectedItem] = useState("Personal Settings");
       </div>
     ))}
   </aside>
+
 )}
+{activeTab === "Profile" && (
+  <div className="profile-sidebar">
+    <h3>Profile Settings</h3>
+
+    <div className="theme-section">
+      <h4>Theme Mode</h4>
+      <div className="theme-switcher">
+        <button onClick={() => setTheme("light")}>Light</button>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("auto")}>Auto</button>
+      </div>
+    </div>
+
+    
+  </div>
+)}
+
 <div className="main-content">
-   
-          {activeTab === "Home" && (
-            <>
-              <div className="welcome-box">
-                <div className="icon">🏢</div>
-                <h2>Welcome Admin</h2>
-              </div>
+{activeTab === "Home" && (
+  <div className="home-content">
+    {/* Welcome Section */}
+    <div className="welcome-box">
+      <div className="welcome-icon"><IoHomeOutline /></div>
+      <h2>Welcome, Admin</h2>
+      <p>Here's a quick overview of your CRM activity</p>
+    </div>
 
-              <div className="summary-cards">
-                <div className="card">My Open Deals <span>0</span></div>
-                <div className="card">My Untouched Deals <span>0</span></div>
-                <div className="card">My Calls Today <span>0</span></div>
-                <div className="card">My Leads <span>0</span></div>
-              </div>
+    {/* Summary Cards */}
+    <div className="summary-cards">
+      <div className="card"><h4>My Open Deals</h4><span>0</span></div>
+      <div className="card"><h4>My Untouched Deals</h4><span>0</span></div>
+      <div className="card"><h4>My Calls Today</h4><span>0</span></div>
+      <div className="card"><h4>My Leads</h4><span>0</span></div>
+    </div>
 
-              <div className="table-section">
-                {["tasks", "meetings", "deals"].map(section => (
-                  <div className="table-box" key={section}>
-                    <div className="box-actions">
-                      <button className="refresh-btn"><FiRefreshCcw /></button>
-                      <button className="menu-btn" onClick={() => toggleMenu(section)}>⋮</button>
-                      {openMenu === section && (
-                        <div className="menu-dropdown">
-                          <div>Edit</div>
-                          <div>Delete</div>
-                          
-                        </div>
-                      )}
-                    </div>
-                    <h3>{section === 'tasks' ? "My Open Tasks" :
-                        section === 'meetings' ? "My Meetings" :
-                        "My Deals Closing This Month"}</h3>
-                    <div className="table-scroll">
-                      
-                      <table>
-                        <thead>
-                          <tr>
-                            {section === "tasks" && <>
-                              <th>Subject</th><th>Due Date</th><th>Status</th><th>Priority</th><th>Related To</th><th>Contact Name</th>
-                            </>}
-                            {section === "meetings" && <>
-                              <th>Title</th><th>From</th><th>To</th><th>Related To</th><th>Contact Name</th>
-                            </>}
-                            {section === "deals" && <>
-                              <th>Deal Name</th><th>Amount</th><th>Stage</th><th>Closing Date</th><th>Account Name</th><th>Contact Name</th><th>Deal Owner</th>
-                            </>}
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    {/* Data Tables */}
+    <div className="table-section">
+      {["tasks", "meetings", "deals"].map(section => (
+        <div className="table-box" key={section}>
+          <div className="table-header">
+            <h3>
+              {section === 'tasks' ? "My Open Tasks" :
+               section === 'meetings' ? "My Meetings" :
+               "My Deals Closing This Month"}
+            </h3>
+            <div className="box-actions">
+              <button className="refresh-btn"><FiRefreshCcw /></button>
+              <button className="menu-btn" onClick={() => toggleMenu(section)}>⋮</button>
+              {openMenu === section && (
+                <div className="menu-dropdown">
+                  <div>Edit</div>
+                  <div>Delete</div>
+                </div>
+              )}
+            </div>
+          </div>
 
-              <div className="leads-box">
-                <div className="box-actions">
-                  <button className="refresh-btn"><FiRefreshCcw /></button>
-                  <button className="menu-btn" onClick={() => toggleMenu('leads')}>⋮</button>
-                  {openMenu === 'leads' && (
-                    <div className="menu-dropdown">
-                      <div>Edit</div>
-                      <div>Delete</div>
-                    </div>
+          <div className="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  {section === "tasks" && (
+                    <>
+                      <th>Subject</th>
+                      <th>Due Date</th>
+                      <th>Status</th>
+                      <th>Priority</th>
+                      <th>Related To</th>
+                      <th>Contact Name</th>
+                    </>
                   )}
-                </div>
-                <h3>Today's Leads</h3>
-                <div className="empty-state">
-                  <p>No Leads found.</p>
-                </div>
-              </div>
-            </>
+                  {section === "meetings" && (
+                    <>
+                      <th>Title</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Related To</th>
+                      <th>Contact Name</th>
+                    </>
+                  )}
+                  {section === "deals" && (
+                    <>
+                      <th>Deal Name</th>
+                      <th>Amount</th>
+                      <th>Stage</th>
+                      <th>Closing Date</th>
+                      <th>Account Name</th>
+                      <th>Contact Name</th>
+                      <th>Deal Owner</th>
+                    </>
+                  )}
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Today's Leads Box */}
+    <div className="leads-box">
+      <div className="box-header">
+        <h3>Today's Leads</h3>
+        <div className="box-actions">
+          <button className="refresh-btn"><FiRefreshCcw /></button>
+          <button className="menu-btn" onClick={() => toggleMenu('leads')}>⋮</button>
+          {openMenu === 'leads' && (
+            <div className="menu-dropdown">
+              <div>Edit</div>
+              <div>Delete</div>
+            </div>
           )}
+        </div>
+      </div>
+      <div className="empty-state">
+        <p>No Leads found.</p>
+      </div>
+    </div>
+  </div>
+)}
+
 
           {/* Module Switching */}
           {activeTab === "Modules" && activeModule === "Leads" && <LeadsModule />}
@@ -468,6 +551,21 @@ const [selectedItem, setSelectedItem] = useState("Personal Settings");
             {activeTab === "Setup" && selectedItem === "Compliance Settings" && <ComplianceSettings/>}
             {activeTab === "Setup" && selectedItem === "Support Access" && <SupportAccessPage/>}
             {activeTab === "Setup" && selectedItem === "Email" && <EmailComposeSettings/>}
+            {activeTab === "Setup" && selectedItem === "Webforms" && <WebForms/>}
+            {activeTab === "Setup" && selectedItem === "Notification SMS" && <NotificationSMSPage/>}
+            {activeTab === "Setup" && selectedItem === "Chat" && <Chatpage/>}
+            {activeTab === "Setup" && selectedItem === "Modules and Fields" && <ModuleManagementPage/>}
+            {activeTab === "Setup" && selectedItem === "Customize Home page" && <CustomizeHomePage/>}
+            {activeTab === "Setup" && selectedItem === "Templates" && <TemplatesPage/>}
+            {activeTab === "Setup" && selectedItem === "Workflow Rules" && <WorkflowRulesPage/>}
+            {activeTab === "Setup" && selectedItem === "Actions" && <ActionPage/>}
+            {activeTab === "Setup" && selectedItem === "Import" && <ImportPage/>}
+            {activeTab === "Setup" && selectedItem === "Export" && <ExportPage/>}
+            {activeTab === "Setup" && selectedItem === "Data Backup" && <DataBackupPage/>}
+            {activeTab === "Setup" && selectedItem === "Remove sample data" && <RemoveSampleData/>}
+            {activeTab === "Setup" && selectedItem === "Recycle Bin" && <RecycleBin/>}
+            {isProfileOpen && <ProfileSidebar onClose={() => setIsProfileOpen(false)} />}
+
 
 
 

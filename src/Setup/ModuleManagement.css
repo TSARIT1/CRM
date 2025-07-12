@@ -1,0 +1,135 @@
+.module-management-container {
+  padding: 1.5rem;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.module-header h2 {
+  font-size: 1.25rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+.create-btn {
+  background: #c7d2fe;
+  color: #3730a3;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.create-btn:hover {
+  background: #a5b4fc;
+}
+
+.module-search {
+  margin-bottom: 1rem;
+}
+
+.module-search input {
+  width: 240px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.module-table {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  align-items: center;
+  font-size: 0.92rem;
+}
+
+.table-header {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #374151;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.tab-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.tab-name .icon {
+  font-size: 1.2rem;
+  background: #eef2ff;
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.shared-to {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.toggle-wrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-switch.on {
+  background-color: #22c55e; /* green */
+}
+
+.toggle-ball {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-switch.on .toggle-ball {
+  transform: translateX(20px);
+}
+
