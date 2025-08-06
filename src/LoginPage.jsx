@@ -39,7 +39,7 @@ const LoginPage = () => {
           <button className="icon-btn google">G</button>
           <button className="icon-btn apple"></button>
           <button className="icon-btn office">O</button>
-          <button className="icon-btn more">••••</button>
+          <button className="icon-btn more">•••</button>
         </div>
       </div>
     </div>

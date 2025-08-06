@@ -1,0 +1,105 @@
+.email-page-container {
+  padding: 24px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.email-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+}
+
+.icon-circle {
+  background-color: #e3fcef;
+  padding: 12px;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle.green {
+  color: green;
+}
+
+.email-details span {
+  font-weight: 600;
+  display: block;
+}
+
+.email-details p {
+  font-size: 12px;
+  color: gray;
+  margin: 0;
+}
+
+.verified-icon {
+  margin-left: auto;
+  font-size: 18px;
+  color: green;
+}
+
+.trash-icon {
+  color: #c0392b;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.add-link {
+  margin-top: 16px;
+  color: #007bff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  width: 400px;
+  animation: slide-up 0.4s ease;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

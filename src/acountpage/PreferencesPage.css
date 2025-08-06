@@ -1,0 +1,13 @@
+.preferences-container {
+  padding: 20px;
+}
+.pref-item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.pref-icon {
+  font-size: 24px;
+  color: #0057b7;
+  margin-right: 15px;
+}

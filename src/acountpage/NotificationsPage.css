@@ -1,0 +1,13 @@
+.notifications-container {
+  padding: 20px;
+}
+.notification-item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.notif-icon {
+  font-size: 22px;
+  color: #ff8c00;
+  margin-right: 12px;
+}

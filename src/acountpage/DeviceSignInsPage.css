@@ -1,0 +1,19 @@
+.device-container {
+  padding: 2rem;
+}
+.device-list {
+  list-style: none;
+  padding: 0;
+}
+.device-item {
+  background: #f8f9fa;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border-left: 5px solid #007bff;
+}
+.device-item span {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+}

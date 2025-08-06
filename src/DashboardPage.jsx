@@ -264,16 +264,16 @@ useEffect(() => {
     setIsSearchOpen(false);       // close Search popup if navigating away
   }
 }} ><span className="nav-icon">
-               { tab === "Reports" ? <TbReportSearch style={{ color: "#4F46E5" }} /> :
-                 tab === "Analytics" ? <IoMdAnalytics style={{ color: "#16A34A" }} /> :
+               { tab === "Reports" ? <TbReportSearch style={{ color: "#4c44e0ff" }} /> :
+                 tab === "Analytics" ? <IoMdAnalytics style={{ color: "#19aa4eff" }} /> :
                  tab === "Requests" ? <IoGitPullRequestSharp style={{ color: "#D97706" }} /> :
-                 tab === "Marketplace" ? <SiCoinmarketcap style={{ color: "#DB2777" }} /> :
+                 tab === "Marketplace" ? <SiCoinmarketcap style={{ color: "#dc297aff" }} /> :
                  tab === "Search" ? <FaSearch style={{ color: "#2563EB" }} /> :
                  tab === "AddNew" ? <MdOutlineAddCircle style={{ color: "#10B981" }} /> :
                  tab === "Home" ? <IoHomeOutline style={{ color: "#9333EA" }} /> :
-                 tab === "Setup" ? <MdOutlineWifiProtectedSetup style={{ color: "#F59E0B" }} /> :
+                 tab === "Setup" ? <MdOutlineWifiProtectedSetup style={{ color: "#eb9a0eff" }} /> :
                  tab === "Modules" ? <VscFileSubmodule style={{ color: "#3B82F6" }} /> :
-                 tab === "Profile" ? <CgProfile style={{ color: "#0EA5E9" }} /> :
+                 tab === "Profile" ? <CgProfile style={{ color: "#17aff6ff" }} /> :
                                                                                               ""}
             </span>
             <span className="nav-label">{tab}</span>
@@ -391,6 +391,11 @@ useEffect(() => {
 )}
 
 <div className="main-content">
+   <>
+   <div className="profile-overlay" onClick={() => setIsProfileOpen(false)}></div>
+    <div className="profile-overlay" onClick={() => setIsProfileOpen(true)} />
+    
+  </>
 {activeTab === "Home" && (
   <div className="home-content">
     {/* Welcome Section */}
@@ -565,6 +570,7 @@ useEffect(() => {
             {activeTab === "Setup" && selectedItem === "Remove sample data" && <RemoveSampleData/>}
             {activeTab === "Setup" && selectedItem === "Recycle Bin" && <RecycleBin/>}
             {isProfileOpen && <ProfileSidebar onClose={() => setIsProfileOpen(false)} />}
+            
 
 
 
@@ -580,31 +586,5 @@ useEffect(() => {
 };
 
 export default DashboardPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

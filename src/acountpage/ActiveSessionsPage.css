@@ -1,0 +1,37 @@
+.active-sessions-container {
+  padding: 20px;
+}
+
+.session-card {
+  display: flex;
+  align-items: center;
+  background: #f4f6f8;
+  border: 1px solid #d1d9e6;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.session-card:hover {
+  background-color: #eef3f7;
+}
+
+.session-icon {
+  font-size: 28px;
+  color: #007bff;
+  margin-right: 16px;
+}
+
+.session-details {
+  flex: 1;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}

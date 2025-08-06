@@ -1,4 +1,3 @@
-// src/modules/LeadsModule.jsx
 import React, { useState } from 'react';
 import './LeadsModule.css';
 
@@ -6,34 +5,34 @@ const LeadsModule = () => {
   const [showLeadModal, setShowLeadModal] = useState(false);
 
   const CreateLeadModal = ({ onClose }) => (
-    <div className="lead-modal-overlay">
-      <div className="lead-modal-box">
+    <div className="lm-modal-overlay">
+      <div className="lm-modal-box">
         <h2>Create Lead</h2>
-        <button className="close-btn" onClick={onClose}>×</button>
-        <form className="create-lead-form">
+        <button className="lm-close-btn" onClick={onClose}>×</button>
+        <form className="lm-form">
           <h3>Lead Information</h3>
-          <div className="form-grid">
-            <div className="form-group"><label>Company *</label><input type="text" /></div>
-            <div className="form-group"><label>First Name</label><input type="text" /></div>
-            <div className="form-group"><label>Last Name *</label><input type="text" /></div>
-            <div className="form-group"><label>Email</label><input type="email" /></div>
-            <div className="form-group"><label>Phone</label><input type="text" /></div>
+          <div className="lm-grid">
+            <div className="lm-group"><label>Company *</label><input type="text" /></div>
+            <div className="lm-group"><label>First Name</label><input type="text" /></div>
+            <div className="lm-group"><label>Last Name *</label><input type="text" /></div>
+            <div className="lm-group"><label>Email</label><input type="email" /></div>
+            <div className="lm-group"><label>Phone</label><input type="text" /></div>
           </div>
 
           <h3>Address Information</h3>
-          <div className="form-grid">
-            <div className="form-group"><label>City</label><input type="text" /></div>
-            <div className="form-group"><label>Country</label><input type="text" /></div>
+          <div className="lm-grid">
+            <div className="lm-group"><label>City</label><input type="text" /></div>
+            <div className="lm-group"><label>Country</label><input type="text" /></div>
           </div>
 
           <h3>Description</h3>
-          <div className="form-group full-width">
+          <div className="lm-group lm-full">
             <textarea placeholder="Type here..." rows="3" />
           </div>
 
-          <div className="form-actions">
-            <button type="submit" className="btn primary">Save</button>
-            <button type="button" className="btn" onClick={onClose}>Cancel</button>
+          <div className="lm-actions">
+            <button type="submit" className="lm-btn lm-primary">Save</button>
+            <button type="button" className="lm-btn" onClick={onClose}>Cancel</button>
           </div>
         </form>
       </div>
@@ -41,12 +40,12 @@ const LeadsModule = () => {
   );
 
   return (
-    <div className="leads-module">
-      <div className="leads-sidebar">
-        <div className="filter-title">Filter Leads by</div>
-        <input className="lead-search" placeholder="🔍 Search" />
+    <div className="lm-wrapper">
+      <div className="lm-sidebar">
+        <div className="lm-title">Filter Leads by</div>
+        <input className="lm-search" placeholder="🔍 Search" />
 
-        <div className="filter-group">
+        <div className="lm-filters">
           <details open>
             <summary>▾ System Defined Filters</summary>
             <ul>
@@ -67,16 +66,16 @@ const LeadsModule = () => {
         </div>
       </div>
 
-      <div className="leads-table-section">
-        <div className="lead-table-header">
+      <div className="lm-table-section">
+        <div className="lm-header">
           <span>Total Records: <strong>0</strong></span>
-          <div className="lead-actions">
-            <button className="btn" onClick={() => setShowLeadModal(true)}>+ Create Lead</button>
+          <div className="lm-actions">
+            <button className="lm-btn" onClick={() => setShowLeadModal(true)}>+ Create Lead</button>
           </div>
         </div>
 
-        <div className="leads-table-scroll">
-          <table className="lead-table">
+        <div className="lm-table-scroll">
+          <table className="lm-table">
             <thead>
               <tr>
                 <th>Lead Name</th>
@@ -99,3 +98,4 @@ const LeadsModule = () => {
 };
 
 export default LeadsModule;
+

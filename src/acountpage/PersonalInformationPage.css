@@ -1,0 +1,204 @@
+.personal-info-container {
+  padding: 30px;
+  background-color: #f4f5f7;
+  animation: fadeIn 0.6s ease;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.edit-btn {
+  background: #00c292;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+}
+.edit-btn:hover {
+  background: #009e74;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card-section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.icon-circle.green {
+  background-color: #28a745;
+  color: white;
+}
+
+.email-details span {
+  font-weight: bold;
+}
+.email-details p {
+  font-size: 12px;
+  color: gray;
+  margin: 0;
+}
+
+.verified-icon {
+  color: #28a745;
+  font-size: 20px;
+}
+
+.trash-icon {
+  margin-left: auto;
+  color: #999;
+  cursor: pointer;
+}
+
+.add-link {
+  margin-top: 15px;
+  color: #007bff;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.add-link:hover {
+  color: #0056b3;
+}
+
+.add-mobile-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.add-mobile-container img {
+  width: 80px;
+  opacity: 0.5;
+}
+
+.add-mobile-btn {
+  background: #00c292;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-top: 15px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.add-mobile-btn:hover {
+  background: #009e74;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 350px;
+  animation: slideUp 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.save-btn {
+  background: #00c292;
+  border: none;
+  padding: 10px 16px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.save-btn:hover {
+  background: #009e74;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

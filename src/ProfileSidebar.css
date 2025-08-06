@@ -1,186 +1,271 @@
-/* Root Theme Variables */
-:root {
-  --sidebar-bg: #ffffff;
-  --text-color: #111111;
-  --profile-bg-dark: rgba(31, 31, 31, 0.95); /* strong dark */
-  --profile-bg-light: rgba(255, 255, 255, 0.85); /* light blur */
-  --profile-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Theme Overrides */
-body.theme-day {
-  --sidebar-bg: var(--profile-bg-light);
-  --text-color: #111;
-}
-
-body.theme-night {
-  --sidebar-bg: var(--profile-bg-dark);
-  --text-color: #f3f3f3;
-}
-
-/* Sidebar Base */
+/* Sidebar container */
 .profile-sidebar {
-  width: 320px;
-  height: 100vh;
   position: fixed;
-  right: 0;
   top: 0;
-  background: var(--sidebar-bg);
-  box-shadow: var(--profile-shadow);
-  color: var(--text-color);
-  padding: 1.5rem;
-  z-index: 1000;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.08);
+  z-index: 999;
+  padding: 20px;
   overflow-y: auto;
-  backdrop-filter: blur(12px); /* enable blur effect */
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px 0 0 12px;
+  transition: all 0.4s ease-in-out;
 }
 
-/* Close Button */
-.profile-sidebar .close-btn {
+/* Slide-in animation */
+.slide-in {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Close button */
+.close-btn2 {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: none;
+  background: transparent;
   border: none;
-  font-size: 1.2rem;
+  font-size: 20px;
   cursor: pointer;
-  color: var(--text-color);
+  color: #333;
 }
 
-/* User Info Section */
-.profile-section {
+/* Header (avatar + name) */
+.sidebar-header {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 24px;
 }
 
-.avatar-icon {
-  font-size: 50px;
-  margin-right: 1rem;
-  color: #4f46e5;
+.user-avatar {
+  font-size: 40px;
+  color: #666;
 }
 
-.user-info h4 {
+.org-name {
   margin: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.tag {
-  font-size: 0.8rem;
-  color: #2563eb;
-  margin-top: 4px;
+.user-id {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
 }
 
-/* Plan Section */
+.org-dropdown {
+  font-size: 13px;
+  color: #444;
+}
+
+/* Plan section */
 .plan-section {
-  margin: 2rem 0;
+  background: #f7f7f9;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.plan-label {
+  font-weight: 500;
+  
+}
+
 .upgrade-btn {
-  background: #4f46e5;
+  background: #5b6fe6;
   color: white;
-  padding: 0.4rem 0.8rem;
+  padding: 8px 14px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
-  cursor: pointer;
+  gap: 6px;
+  transition: background 0.3s;
 }
 
-/* Theme Switch */
-.theme-switch .modes button {
-  background: transparent;
-  border: none;
-  margin-right: 1rem;
-  color: inherit;
-  cursor: pointer;
-  font-size: 0.9rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.upgrade-btn:hover {
+  background: #4352d6;
 }
 
-.theme-switch .modes button.active {
-  font-weight: bold;
-  color: #4f46e5;
+/* Theme section */
+.theme-section h4 {
+  margin: 20px 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
 }
 
-/* Color Palette */
-.theme-switch .colors {
-  margin-top: 0.5rem;
+.theme-buttons {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.theme-buttons button {
+  flex: 1;
+  background: #f1f3f5;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.theme-buttons button.active,
+.theme-buttons button:hover {
+  background: #5b6fe6;
+  color: white;
+}
+
+.theme-colors {
+  display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
 }
 
-.theme-switch .colors span {
+.theme-color {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
 }
 
-/* Help Section */
+.theme-color:hover {
+  transform: scale(1.1);
+  border-color: #ccc;
+}
+
+/* Help section */
 .help-section {
-  margin-top: 2rem;
+  margin-top: 30px;
 }
 
 .help-section h4 {
-  margin-bottom: 0.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.help-links p {
+.help-items p {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin: 0.4rem 0;
-  font-size: 0.9rem;
+  gap: 10px;
+  font-size: 14px;
+  padding: 6px 0;
+  color: #444;
+  cursor: pointer;
 }
 
-/* News Buttons */
-.news-room {
-  margin-top: 1.5rem;
+.help-items p:hover {
+  color: #5b6fe6;
+}
+
+/* News section */
+.news-section {
+  margin-top: 30px;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.news-room button {
-  flex: 1;
-  background: #f3f4f6;
-  padding: 0.5rem;
+.news-section button {
+  background: #f1f3f5;
   border: none;
-  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  gap: 10px;
+  transition: all 0.2s;
 }
 
-/* Footer Actions */
-.footer-actions {
-  margin-top: 2rem;
+.news-section button:hover {
+  background: #e4e7ec;
+}
+
+/* Footer buttons */
+.footer-section {
+  margin-top: 40px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.footer-actions .my-account {
-  background: none;
-  border: 1px solid #4f46e5;
-  padding: 0.4rem 1rem;
-  border-radius: 4px;
-  color: #4f46e5;
-  cursor: pointer;
-}
-
-.footer-actions .signout {
-  background: none;
+.account-btn,
+.signout-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
   border: none;
-  color: #ef4444;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 5px;
-  cursor: pointer;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
 }
+
+.account-btn {
+  background: #f1f3f5;
+  color: #333;
+}
+
+.account-btn:hover {
+  background: #e0e3e9;
+}
+
+.signout-btn {
+  background: #ffe6e6;
+  color: #d32f2f;
+}
+
+.signout-btn:hover {
+  background: #ffc9c9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

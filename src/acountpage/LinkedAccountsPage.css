@@ -1,0 +1,16 @@
+.linked-accounts-container {
+  padding: 20px;
+}
+.linked-list {
+  list-style: none;
+  padding: 0;
+}
+.linked-list li {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+.linked-list svg {
+  margin-right: 10px;
+  font-size: 20px;
+}

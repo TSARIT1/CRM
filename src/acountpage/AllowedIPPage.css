@@ -1,0 +1,38 @@
+.ip-container {
+  padding: 2rem;
+}
+.ip-btn {
+  background: #6610f2;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+.ip-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ip-modal {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 6px;
+  width: 300px;
+}
+.ip-modal input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 8px;
+}
+.ip-save {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+}

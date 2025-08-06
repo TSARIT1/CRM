@@ -1,13 +1,12 @@
-/* ----- MAIN WRAPPER ----- */
-.leads-module {
+.lm-wrapper {
   display: flex;
   height: 100%;
   background: #f1f5f9;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ----- SIDEBAR ----- */
-.leads-sidebar {
+/* Sidebar */
+.lm-sidebar {
   width: 280px;
   background: #ffffff;
   padding: 20px;
@@ -15,14 +14,14 @@
   box-shadow: 1px 0 4px rgba(0, 0, 0, 0.03);
 }
 
-.filter-title {
+.lm-title {
   font-size: 16px;
   font-weight: 600;
   color: #1e293b;
   margin-bottom: 16px;
 }
 
-.lead-search {
+.lm-search {
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 24px;
@@ -31,8 +30,8 @@
   border-radius: 8px;
 }
 
-/* Filter Groups */
-.filter-group details {
+/* Filters */
+.lm-filters details {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -40,42 +39,35 @@
   margin-bottom: 16px;
   font-size: 14px;
   color: #334155;
+  transition: all 0.2s ease;
 }
 
-.filter-group summary {
+.lm-filters summary {
   font-weight: 600;
   cursor: pointer;
   color: #1e293b;
-  margin-bottom: 10px;
 }
 
-.filter-group ul {
+.lm-filters ul {
   list-style: none;
   padding-left: 0;
   margin-top: 10px;
 }
 
-.filter-group li {
+.lm-filters li {
   margin: 6px 0;
-  display: flex;
-  align-items: center;
   font-size: 14px;
   color: #475569;
 }
 
-.filter-group input[type="checkbox"] {
-  margin-right: 8px;
-}
-
-/* ----- MAIN TABLE SECTION ----- */
-.leads-table-section {
+/* Main */
+.lm-table-section {
   flex: 1;
   padding: 24px;
   background: #e8ecf1;
 }
 
-/* Header Row */
-.lead-table-header {
+.lm-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,7 +76,7 @@
   color: #38485e;
 }
 
-.lead-actions .btn {
+.lm-actions .lm-btn {
   background: #6366f1;
   color: white;
   border: none;
@@ -92,53 +84,53 @@
   padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.3s ease all;
 }
 
-.lead-actions .btn:hover {
+.lm-actions .lm-btn:hover {
   background: #4f46e5;
 }
 
-/* ----- TABLE STYLE ----- */
-.leads-table-scroll {
+.lm-table-scroll {
   background: #fff;
   border-radius: 12px;
   overflow: auto;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  animation: fadeIn 0.4s ease;
 }
 
-.lead-table {
+.lm-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 800px;
 }
 
-.lead-table th,
-.lead-table td {
+.lm-table th,
+.lm-table td {
   padding: 14px 18px;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
   white-space: nowrap;
 }
 
-.lead-table th {
+.lm-table th {
   background: #f9fafb;
   font-weight: 600;
   color: #1e293b;
 }
 
-.lead-table td {
+.lm-table td {
   color: #334155;
 }
 
-.lead-table td[colspan="5"] {
+.lm-table td[colspan="5"] {
   text-align: center;
   color: #94a3b8;
   padding: 40px 0;
 }
 
-/* ----- MODAL ----- */
-.lead-modal-overlay {
+/* Modal */
+.lm-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -148,10 +140,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 0.3s ease;
   z-index: 1000;
 }
 
-.lead-modal-box {
+.lm-modal-box {
   width: 650px;
   max-width: 95%;
   background: #ffffff;
@@ -159,15 +152,10 @@
   padding: 30px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   position: relative;
+  animation: slideIn 0.3s ease;
 }
 
-.lead-modal-box h2 {
-  margin-bottom: 20px;
-  color: #1e293b;
-  font-size: 20px;
-}
-
-.close-btn {
+.lm-close-btn {
   position: absolute;
   top: 18px;
   right: 20px;
@@ -178,72 +166,56 @@
   color: #475569;
 }
 
-/* ----- FORM STYLES ----- */
-.create-lead-form {
+.lm-form {
   display: flex;
   flex-direction: column;
 }
 
-.create-lead-form h3 {
+.lm-form h3 {
   font-size: 16px;
   margin: 24px 0 12px;
   color: #1e293b;
 }
 
-.form-grid {
+.lm-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.form-group {
+.lm-group {
   flex: 1 1 calc(50% - 10px);
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.lm-group label {
   font-size: 14px;
   color: #394960;
   margin-bottom: 6px;
 }
 
-.form-group input,
-.form-group textarea {
+.lm-group input,
+.lm-group textarea {
   padding: 10px 12px;
   border: 1px solid #d6dde4;
   border-radius: 8px;
   font-size: 14px;
 }
 
-.form-group.full-width {
+.lm-full {
   width: 100%;
   margin-top: 10px;
 }
 
-/* ----- FORM ACTIONS ----- */
-.form-actions {
+.lm-actions {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   margin-top: 24px;
 }
 
-.btn.primary {
-  background-color: #6366f1;
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 10px 18px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.btn.primary:hover {
-  background-color: #4f46e5;
-}
-
-.btn {
+.lm-btn {
   background-color: #dde4ec;
   color: #1e293b;
   border: none;
@@ -252,6 +224,27 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.lm-primary {
+  background-color: #6366f1;
+  color: white;
+}
+
+.lm-primary:hover {
+  background-color: #4f46e5;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-10%); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
+}
+
 
 
 

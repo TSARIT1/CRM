@@ -1,0 +1,16 @@
+.auth-websites-container {
+  padding: 20px;
+}
+.website-list {
+  list-style: none;
+  padding: 0;
+}
+.website-list li {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.website-list svg {
+  margin-right: 10px;
+  color: #00b894;
+}
